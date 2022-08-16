@@ -1,0 +1,105 @@
+title: 'UK Nav'
+data:
+  isActive: false
+  featured_links:
+    -
+      image: global_nav/KOOSH-nav-button_VERT.jpg
+      link: a64f8f3f-e4bb-43b4-848a-56539be4f348
+    -
+      image: global_nav/MicrosoftTeams-image-(2).png
+      link: 5a30173a-db00-49e3-8dbd-2f448dfdf59b
+    -
+      image: global_nav/drone-home2-01.jpg
+      link: 06a3deab-c104-4c4a-a991-1189b1c53583
+    -
+      image: global_nav/SnapShips_nav2.png
+      link: 9ba2cc0b-1039-4604-afa1-5e02a01c6937
+  categorized_links:
+    -
+      category: fbdef0ba-93e5-4b1f-81a7-e0084cbaf552
+      links:
+        - 27b69331-f745-46a2-82a1-4d8ef258a4a5
+        - 031c4973-3c3c-480f-b0cd-c6c64c9f2243
+        - 06a3deab-c104-4c4a-a991-1189b1c53583
+        - 9be62d8c-70ad-41d2-894a-76c232db4a50
+        - 16352515-98b3-4355-9d89-483c233e756e
+        - c0b7006b-a1bd-48ba-b5fa-a8d79625d5d6
+        - 7880cb34-e599-4d02-995a-5e16d81bd5d2
+        - f9dc074a-b6c6-4880-97ef-b728de20e154
+    -
+      category: 800fcf98-b3b7-4fb0-8473-679d4f1e91df
+      links:
+        - b0d6078f-1406-4bdb-8f08-c309c1ce86aa
+        - c9419dbf-d2a5-4158-9027-914f42d2ed2b
+        - b3fdf6fc-53d6-4d36-8ab6-ff313792a8e9
+        - 8ae438d2-e173-45de-ac52-4a8d3da0fb36
+        - cf728208-9d4f-442b-ac16-0ecc9793c348
+        - 0d954e40-69e9-4644-bddb-509e136c4d13
+    -
+      category: 44224d26-99bf-49fc-bd63-bd794407abee
+      links:
+        - b0d6078f-1406-4bdb-8f08-c309c1ce86aa
+        - 872b61ed-85ba-41db-b867-68badd04183b
+        - caddf0e6-ffee-461e-8e98-baa8f511515c
+        - b2a68ac9-bd8e-4ed3-9def-c0ecb0bf5549
+        - cd9dbce1-b59d-4510-ada2-96111397581f
+        - e3546b14-168d-40f6-a560-355e877f1135
+        - fd36782a-9470-49fc-b63e-0ab3f8148955
+        - 0d954e40-69e9-4644-bddb-509e136c4d13
+    -
+      category: e8dbbcef-5409-4c2e-8658-b8b4407cb31d
+      links:
+        - b2a68ac9-bd8e-4ed3-9def-c0ecb0bf5549
+        - 498355a6-c50f-4921-b421-564ea6fed184
+        - 5631d7e5-c6cf-48cd-89b1-bb5977d194a0
+        - a7b42992-85bf-48e5-a62e-5a586c8fdbec
+        - d8abda52-08ba-47e3-8703-e833904becb1
+        - c373bea5-d518-48b8-9336-2ec42f40c708
+    -
+      category: 5f054af0-7e78-47d7-8481-9dd73eac3982
+      links:
+        - c9419dbf-d2a5-4158-9027-914f42d2ed2b
+        - 3f9ca7bc-4bb1-45c1-b6fe-5a72df3e9a86
+        - 2757196d-ddac-4fc6-887d-2fb461d37096
+        - c3b5d33f-2a17-4b39-9fcb-852243f65064
+        - 16352515-98b3-4355-9d89-483c233e756e
+        - 6029ceeb-abe3-4b8d-b15e-b51e10b945eb
+        - cd9dbce1-b59d-4510-ada2-96111397581f
+        - 4f437d2e-ec34-450c-b57d-489d6b6164d2
+        - 5ef10857-e86f-4142-b3c9-514d4103756d
+        - 0ce77aa5-9920-4655-89d5-70d8c37720cd
+        - acac7363-f495-4dab-90fd-262ea3f8527c
+        - fd36782a-9470-49fc-b63e-0ab3f8148955
+        - bcae5e72-b2f4-46b7-963e-6bdb9cfe7f12
+        - 7130a8b8-6188-4d44-878f-b81171291d0f
+    -
+      category: 9b4e68ae-5a2d-4369-95cb-5bdd9b37a895
+      links:
+        - f4857198-c0d9-4fad-a04d-a4a3ba1d47a7
+        - 67783adb-886d-4b9c-b83a-017d3131932f
+        - bb3eda15-8825-4fb8-a120-dfefe801caa1
+        - 4989e7b8-ff80-412e-a164-905d20e639dc
+        - 378d50d6-4a16-4483-8250-0d7441e79001
+        - ffd784f6-2df9-45c5-a56d-56cc46ff96fe
+        - 612d4a2a-b94d-4661-90ca-4aefc9959eab
+        - 931d4bd1-9da6-47d9-831d-4fc4835ab5f3
+    -
+      category: 009c9591-91ef-431e-b3df-7a3c57f10891
+      links:
+        - 79c4fffe-d38a-4edb-82c4-fef3a9e37358
+        - 3a49286f-228e-41b4-9453-379583be3be0
+        - deb3a732-d0a6-49d7-abed-1a3abc1c1ad8
+        - 09881bb0-6284-43f3-b2a5-176231a57a40
+        - fd7f3dd9-f265-40c0-97c3-5b13d119afed
+        - 6aad5232-5e5b-4a3f-9bbb-a67f6b7b9b2e
+        - 9dbbea8e-db78-49fb-9e3d-e1fe6e1f308a
+        - a6c64a8e-b1aa-43c2-884a-c666f3bacb28
+        - 24e23f9b-2565-441e-9fae-cf7f5a955e84
+        - 0ad01d4d-645e-470a-b8ae-703175be7937
+        - 5a30173a-db00-49e3-8dbd-2f448dfdf59b
+        - 71d8b7bc-dee9-4117-ba12-db90eab142df
+    -
+      category: 212da52a-7c8e-499b-bc73-5edc65a61430
+      links:
+        - 8f1a77f0-bf7d-47f0-bee5-e10f58b4027d
+        - 23f4a3d6-9aa8-49e6-b79c-5beb01bf2696

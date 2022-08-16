@@ -1,0 +1,85 @@
+{{ cache :key="slug" }}
+<div class="overflow-hidden min-w-1280px">
+  <div class="relative w-full h-screen bg-center bg-cover" style="background-image: url({{ glide:image width='1440' height='780' fit='crop_focal' }})">
+    {{ if fullscreen_looping_video }}
+      <div class="absolute top-0 left-0">
+        {{ partial:components/fullscreen_looping_video
+          :video            ="fullscreen_looping_video"
+           background_image ="{glide:image width='1440' height='780' fit='crop_focal}'"
+        }}
+      </div>
+    {{ /if }}
+
+
+    {{ animatable_images }}
+      {{ if reference_point_x === "center" && reference_point_y === "edge" }}
+        {{ partial:category_pages/components/animatable_image
+          p_append_css="margin-left: -{image:width|/:2|ensure_right:px}; margin-right: -{image:width|/:2|ensure_right:px};"
+        }}
+
+      {{ elseif reference_point_x === "edge" && reference_point_y === "center" }}
+        {{ partial:category_pages/components/animatable_image
+          p_append_css="margin-top: -{image:height|/:2|ensure_right:px}; margin-bottom: -{image:height|/:2|ensure_right:px};"
+        }}
+
+      {{ elseif reference_point_x === "center" && reference_point_y === "center" }}
+        {{ partial:category_pages/components/animatable_image
+          p_append_css="margin-top: -{image:height|/:2|ensure_right:px}; margin-bottom: -{image:height|/:2|ensure_right:px}; margin-left: -{image:width|/:2|ensure_right:px}; margin-right: -{image:width|/:2|ensure_right:px};"
+        }}
+
+      {{ elseif reference_point_x === "edge" && reference_point_y === "edge" }}
+        {{ partial:category_pages/components/animatable_image }}
+      {{ /if }}
+    {{ /animatable_images }}
+
+
+    {{ image_links }}
+      <a
+        href  ="{{ brand_page:url }}"
+        class ="absolute block {{ show_red_border ? 'border-red-600 border-4 shadow-dark' : '' }}"
+        style ="{{ css }}"
+      ></a>
+    {{ /image_links }}
+  </div>
+
+
+
+
+  <div class="relative z-30 flex flex-row flex-wrap w-full overflow-visible">
+    {{ brand_page_links }}
+      {{# PurgeCSS safelist: w-1/3 w-1/4 w-1/5 #}}
+      <a href="{{ brand_page:url }}" class="block w-1/{{ brand_page_links_per_row }} hover:z-10">
+        <img
+          class ="block object-cover w-full h-full transition-transform duration-200 transform hover:shadow-dark hover:scale-105"
+          src   ="{{ glide:image width='420' height='300' fit='crop_focal' }}"
+        >
+      </a>
+    {{ /brand_page_links }}
+  </div>
+
+  <button
+    @click ="navOpen = !navOpen"
+    class  ="flex items-center justify-center w-full py-20 text-white bg-brand-blue-300"
+  >
+    <div class="w-50px">
+      {{ partial:components/svg/mo_silhouette }}
+    </div>
+  </button>
+</div>
+{{ /cache }}
+
+
+
+{{ animation_keyframes ensure_left="<style>" ensure_right="</style>" }}
+
+
+{{ section:prepend_to_nav_controls }}
+  {{ if back_link }}
+  
+  <div class="h-full flex items-center px-4 border-r mr-2">
+    <a href="{{ back_link }}" title="{{back_helper_text }}" class ="block text-brand-blue-300 hover:scale-125 transition-transform duration-100 transform focus:outline-none">
+      {{ partial:components/svg/nav_return }}
+    </a>
+  </div>
+  {{ /if }}
+{{ /section:prepend_to_nav_controls }}

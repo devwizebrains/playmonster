@@ -1,0 +1,39 @@
+sections:
+  main:
+    display: Main
+    fields:
+      -
+        handle: headline
+        field:
+          placeholder: 'Sign in to your account'
+          input_type: text
+          antlers: false
+          display: Headline
+          type: text
+          icon: text
+          width: 50
+          listable: hidden
+      -
+        handle: reset_headline
+        field:
+          placeholder: 'Reset your password'
+          input_type: text
+          antlers: false
+          display: 'Reset Headline'
+          type: text
+          icon: text
+          width: 50
+          listable: hidden
+      -
+        handle: reset_helper_text
+        field:
+          restrict: false
+          automatic_line_breaks: true
+          automatic_links: true
+          escape_markup: false
+          smartypants: true
+          antlers: false
+          display: 'Reset Helper Text'
+          type: markdown
+          icon: markdown
+          listable: hidden

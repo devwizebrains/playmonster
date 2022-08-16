@@ -1,0 +1,15 @@
+.scoped-text-block ul {
+  @apply ml-6 mr-3 my-4;
+}
+
+.scoped-text-block ul li {
+  @apply list-disc list-outside leading-tight my-2;
+}
+
+.markdown a {
+  @apply text-indigo-600;
+}
+
+.markdown a:hover {
+  @apply text-brand-blue-500 underline;
+}

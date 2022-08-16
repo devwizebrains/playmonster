@@ -1,0 +1,12 @@
+name: 'Evan Gran'
+roles:
+  - admin
+id: 1299cdbc-8dda-4225-987f-857fba58ab14
+password_hash: $2y$10$A9uC.T4nHzOLXZAQnGCIs.18tmNoI0PH8JuWvsePVRg1zaJfrXBF2
+preferences:
+  assets:
+    assets:
+      mode: grid
+  collections:
+    brand_pages:
+      after_save: continue_editing

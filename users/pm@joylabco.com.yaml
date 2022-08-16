@@ -1,0 +1,9 @@
+name: Joylab
+super: true
+id: 88793a87-d985-4907-bf59-4dc02e1d671f
+password_hash: $2y$10$s53po70UhKdW0afsl4EX.eIu10Lh9BLVoton2u47mUjEGngZIdIXC
+preferences:
+  collections:
+    brand_pages:
+      per_page: 100
+      after_save: continue_editing

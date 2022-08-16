@@ -1,0 +1,13 @@
+title: 'Brand Pages'
+template: brand_pages/show
+layout: layout
+taxonomies:
+  - categories
+revisions: false
+route: '{mount}/{slug}'
+sort_dir: asc
+date_behavior:
+  past: public
+  future: private
+inject:
+  view_model: App\ViewModels\Playbox

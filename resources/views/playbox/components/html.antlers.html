@@ -1,0 +1,11 @@
+{{ if slide_background_color || slide_background_image }}
+  <div class="h-screen w-screen">
+    {{ html }}
+  </div>
+{{ else }}
+  {{ html }}
+{{ /if }}
+
+<style>
+  {{ css }}
+</style>

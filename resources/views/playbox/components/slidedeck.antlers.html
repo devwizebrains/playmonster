@@ -1,0 +1,22 @@
+
+{{ slides }}
+  <div 
+    class="h-screen w-screen bg-center bg-cover relative"
+    id="{{ playbox_uuid }}{{ index }}"
+  >
+    {{ if extension === 'gif' }}
+      <img src="{{ glide:url }}" class="object-contain w-full h-full mx-auto">
+    {{ else }}
+      <img
+        srcset="{{ glide:url width='768'  height='384' fit='max' bg='{slidedeck_background_color|remove_left:#}' }} 768w,
+                {{ glide:url width='1024' height='512' fit='max' bg='{slidedeck_background_color|remove_left:#}' }} 1024w,
+                {{ glide:url width='1280' height='640' fit='max' bg='{slidedeck_background_color|remove_left:#}' }} 1280w,
+                {{ glide:url width='1366' height='683' fit='max' bg='{slidedeck_background_color|remove_left:#}' }} 1366w"
+        sizes="1366px"                        
+        src="{{ glide:url width='1024' height='512' fit='max' bg='{slidedeck_background_color|remove_left:#}' }}"
+        alt="{{ alt }}"
+        class="object-contain w-full h-full mx-auto"
+      >
+    {{ /if }}
+  </div>
+{{ /slides }}

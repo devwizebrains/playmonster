@@ -1,0 +1,22 @@
+<div class="flex justify-around space-x-20 px-20">
+  {{ images }}
+    {{ if count <= playbox_max_images }}
+    <div style="height: {{ playbox_asset_height or '70' }}vh;">
+      {{ if extension === 'gif' }}
+        <img src="{{ glide:url }}" class="object-contain w-full h-full mx-auto">
+      {{ else }}
+        <img
+          srcset="{{ glide:url width='768'  height='384' fit='max' }} 768w,
+                  {{ glide:url width='1024' height='512' fit='max' }} 1024w,
+                  {{ glide:url width='1280' height='640' fit='max' }} 1280w,
+                  {{ glide:url width='1366' height='683' fit='max' }} 1366w"
+          sizes="1366px"                        
+          src="{{ glide:url width='1024' height='512' fit='max' }}"
+          alt="{{ alt }}"
+          class="object-contain w-full h-full mx-auto"
+        >
+      {{ /if }}
+    </div>
+    {{ /if }}
+  {{ /images }}
+</div>

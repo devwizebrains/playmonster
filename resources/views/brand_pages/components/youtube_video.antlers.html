@@ -1,0 +1,37 @@
+---
+video_variants:
+  small:
+    outer_wrapper_class: relative w-40vw
+    inner_wrapper_class: h-0 aspect-ratio-16x9
+    iframe_class:        absolute w-full h-full -mt-8
+  medium:
+    outer_wrapper_class: relative w-60vw
+    inner_wrapper_class: h-0 aspect-ratio-16x9
+    iframe_class:        absolute w-full h-full -mt-8
+  large:
+    outer_wrapper_class: relative w-75vw
+    inner_wrapper_class: h-0 aspect-ratio-16x9
+    iframe_class:        absolute w-full h-full -mt-4
+  full_width:
+    outer_wrapper_class: w-full h-full
+    inner_wrapper_class: w-full h-full
+    iframe_class:        object-cover w-full h-full
+---
+
+
+
+
+<div class="flex items-center justify-center w-full h-screen">
+  <div class="{{ array_get:view:video_variants key='{size}.outer_wrapper_class' }}">
+    <div class="{{ array_get:view:video_variants key='{size}.inner_wrapper_class' }}">
+      <iframe
+        allowfullscreen
+        src         = "{{ video | embed_url }}"
+        frameborder = "0"
+        loading     = "lazy"
+        allow       = "autoplay; encrypted-media;"
+        class       = "{{ array_get:view:video_variants key='{size}.iframe_class' }}"
+      ></iframe>
+    </div>
+  </div>
+</div>

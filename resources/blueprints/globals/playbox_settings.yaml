@@ -1,0 +1,13 @@
+sections:
+  main:
+    display: Main
+    fields:
+      -
+        handle: activate_download
+        field:
+          display: 'Activate Download'
+          type: toggle
+          icon: toggle
+          instructions: 'Toggle if we display the `Download` button in the Showroom'
+          listable: hidden
+

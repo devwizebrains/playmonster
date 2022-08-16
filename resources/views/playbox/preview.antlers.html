@@ -1,0 +1,68 @@
+{{ page }}
+{{#
+  This little bit allows for the page background to be visible if no more specific background is set at the row, or slide level.
+#}}
+<div 
+  class="h-screen w-screen fixed inset-0 bg-center bg-cover" 
+  style="{{ if page_background_image }}background-image: url({{ glide:page_background_image width='1440' height='780' fit='crop_focal' }});{{ /if }}background-color: {{ page_background_color }};"
+></div>
+  {{ slide_rows }}
+    <div
+      class ="relative bg-center bg-cover"
+      style ="{{ if background_image }}background-image: url({{ glide:background_image width='1440' height='780' fit='crop_focal' }});{{ /if }}background-color: {{ background_color }};"
+    >
+      {{ slides }}
+        {{#
+          Ok lets start with looping through the slides in each row to see if we have any playbox candidates
+        #}}
+        {{ if activate_playbox }}
+          {{ if type == 'slidedeck' }}
+            <div class ="bg-center bg-cover relative" style="{{ if slide_background_image }}background-image: url({{ glide:slide_background_image width='1440' height='780' fit='crop_focal' }});{{ /if }}background-color: {{ slide_background_color }};">
+              {{ partial src='playbox/components/{type}' }}
+            </div>
+
+          {{ else }}
+            <div 
+              class="h-screen w-screen bg-center bg-cover relative" 
+              style="{{ if slide_background_image }}background-image: url({{ glide:slide_background_image width='1440' height='780' fit='crop_focal' }});{{ /if }}background-color: {{ slide_background_color }};"
+              id="{{ playbox_uuid }}"
+            >
+            {{#
+              The slide type should line up with a partial that works best for that slide type
+            #}}
+              {{ partial src='playbox/components/{type}' }}
+              
+              {{#
+                If we don't want to display the infobox, we will still show the PM logo
+              #}}
+              {{ if hide_playbox_content }}
+                <div class="absolute right-0 bottom-0 block z-50 px-12 pb-3">
+                  <img src="{{ glide src="/img/playmonster_horizontal_w-outline.png" width="380" height="78" dpr="2" }}" alt="" width="380" height="78">
+                </div>
+              {{ else }}
+                {{ partial:playbox/components/infobox }}
+              {{ /if }}
+            </div>
+          {{ /if }}
+        {{ /if }}
+        
+        {{#
+          Ok lets loop through products if they exist, since they have their own special playbox layout and rules.
+        #}}
+        {{ products }}
+          {{ if activate_playbox }}
+            <div 
+              class="h-screen w-screen bg-center bg-cover relative" 
+              style="{{ if slide_background_image }}background-image: url({{ glide:slide_background_image width='1440' height='780' fit='crop_focal' }});{{ /if }}background-color: {{ slide_background_color }};"
+              id="{{ playbox_uuid }}"
+            >
+              {{ partial:playbox/components/products }}
+
+              {{ partial:playbox/components/infobox }}
+            </div>
+          {{ /if }}
+        {{ /products }}
+      {{ /slides }}
+    </div>
+  {{ /slide_rows }}
+{{ /page }}

@@ -1,0 +1,121 @@
+title: 'Primary Nav'
+data:
+  featured_links:
+    -
+      image: global_nav/spirograph_meganav.jpg
+      link: 0ad01d4d-645e-470a-b8ae-703175be7937
+    -
+      image: global_nav/playskool_showroomButton.png
+      link: 1c670a5c-e9d9-404a-af49-ea084e85a7be
+    -
+      image: global_nav/Annwilliams_meganav.png
+      link: 78b11d80-0f92-46d5-8db3-1ad14da243f0
+    -
+      image: global_nav/KOOSH-nav-button_VERT.jpg
+      link: a64f8f3f-e4bb-43b4-848a-56539be4f348
+  categorized_links:
+    -
+      category: fbdef0ba-93e5-4b1f-81a7-e0084cbaf552
+      links:
+        - 27b69331-f745-46a2-82a1-4d8ef258a4a5
+        - 031c4973-3c3c-480f-b0cd-c6c64c9f2243
+        - 06a3deab-c104-4c4a-a991-1189b1c53583
+        - 537ad87b-2d58-4b1b-9898-6d7d34d63202
+        - 95afae5a-7bfb-4fce-afae-ec7f7a2bb855
+        - 6f0a12cb-3a00-4455-82f4-428ee20e65f8
+        - f9dc074a-b6c6-4880-97ef-b728de20e154
+    -
+      category: 800fcf98-b3b7-4fb0-8473-679d4f1e91df
+      links:
+        - 119be780-b743-40ff-82ef-7a7610c7cff1
+        - 968eabe3-0813-4ea8-8178-d482fe43dbe6
+        - 8c08a60a-8845-4075-92bb-5d315bffa0b0
+        - c9419dbf-d2a5-4158-9027-914f42d2ed2b
+        - b3fdf6fc-53d6-4d36-8ab6-ff313792a8e9
+        - e8fd33f8-8b42-4098-872a-08d1b61f5780
+        - 0d954e40-69e9-4644-bddb-509e136c4d13
+    -
+      category: 44224d26-99bf-49fc-bd63-bd794407abee
+      links:
+        - 119be780-b743-40ff-82ef-7a7610c7cff1
+        - caddf0e6-ffee-461e-8e98-baa8f511515c
+        - cd9dbce1-b59d-4510-ada2-96111397581f
+        - fd36782a-9470-49fc-b63e-0ab3f8148955
+        - b9138881-9905-433b-a439-7c92915c09ea
+        - 4d8aab60-e8cc-47f9-9b0e-bbfb3fecbbc6
+        - 6d1ff653-4d48-492c-952d-f57c60e2ffd2
+        - 092f88e5-42b5-4820-bcfa-8767f4525f9a
+        - 0d954e40-69e9-4644-bddb-509e136c4d13
+    -
+      category: e8dbbcef-5409-4c2e-8658-b8b4407cb31d
+      links:
+        - 498355a6-c50f-4921-b421-564ea6fed184
+        - d8abda52-08ba-47e3-8703-e833904becb1
+        - c373bea5-d518-48b8-9336-2ec42f40c708
+    -
+      category: 5f054af0-7e78-47d7-8481-9dd73eac3982
+      links:
+        - f33bb7d3-fe4f-4a7e-9723-c37caa31bc0e
+        - c9419dbf-d2a5-4158-9027-914f42d2ed2b
+        - 3f9ca7bc-4bb1-45c1-b6fe-5a72df3e9a86
+        - 2757196d-ddac-4fc6-887d-2fb461d37096
+        - 95afae5a-7bfb-4fce-afae-ec7f7a2bb855
+        - 6029ceeb-abe3-4b8d-b15e-b51e10b945eb
+        - cd9dbce1-b59d-4510-ada2-96111397581f
+        - 4f437d2e-ec34-450c-b57d-489d6b6164d2
+        - 5ef10857-e86f-4142-b3c9-514d4103756d
+        - 0ce77aa5-9920-4655-89d5-70d8c37720cd
+        - acac7363-f495-4dab-90fd-262ea3f8527c
+        - fd36782a-9470-49fc-b63e-0ab3f8148955
+        - bcae5e72-b2f4-46b7-963e-6bdb9cfe7f12
+        - 7130a8b8-6188-4d44-878f-b81171291d0f
+    -
+      category: 212da52a-7c8e-499b-bc73-5edc65a61430
+      links:
+        - 833f211d-ab25-4efd-949c-e89dac0f73d8
+        - 7878d2b2-3e5a-431c-9f6a-dcb149119431
+        - 4989e7b8-ff80-412e-a164-905d20e639dc
+        - 8ea71c3d-1b6e-4957-972c-b21fc8498753
+        - bdbc7125-3eb4-448f-8bb9-4727db624a36
+        - 9ba2cc0b-1039-4604-afa1-5e02a01c6937
+    -
+      category: 78b11d80-0f92-46d5-8db3-1ad14da243f0
+      links:
+        - 8804808c-aab5-4b3a-90d5-74780693c55c
+        - 8fe3e80f-9ea9-4b1a-b595-f56b7da20762
+        - d63e999e-6894-4a81-927a-4e8bcd5ea391
+        - 1a6ba266-55bc-45f5-9abc-57dc1e26ba62
+        - e55408f6-ab45-4bab-b2c9-76518cb54dde
+        - e6f7b233-bbf3-4ba4-ad3d-021eb8ba12c9
+    -
+      category: 009c9591-91ef-431e-b3df-7a3c57f10891
+      links:
+        - 3a49286f-228e-41b4-9453-379583be3be0
+        - fd7f3dd9-f265-40c0-97c3-5b13d119afed
+        - 6aad5232-5e5b-4a3f-9bbb-a67f6b7b9b2e
+        - 6011c96e-463b-4ee2-89f7-7d6d7e742a4c
+        - a6c64a8e-b1aa-43c2-884a-c666f3bacb28
+        - 9fcfa87c-a2d7-46c9-8112-13fc1b65a8dc
+    -
+      category: 5a79dcf6-2608-4caa-bdac-ea1ca73b28b7
+      links:
+        - 79c4fffe-d38a-4edb-82c4-fef3a9e37358
+        - 862726ca-81f9-461c-b309-811cf7ef69e0
+        - 6d44b359-ee34-43cf-81b6-2abd0e03e693
+        - 4264ce49-7c34-4f49-a654-85f8cfd62bf6
+        - 0ad01d4d-645e-470a-b8ae-703175be7937
+        - 5a30173a-db00-49e3-8dbd-2f448dfdf59b
+        - 9c669001-c7d0-40e0-94c3-5291527e3158
+    -
+      category: 9b4e68ae-5a2d-4369-95cb-5bdd9b37a895
+      links:
+        - 67783adb-886d-4b9c-b83a-017d3131932f
+        - bb3eda15-8825-4fb8-a120-dfefe801caa1
+        - 542b0f12-4da3-437b-9abc-b8d7fac47bf8
+        - e2fd7ec7-6348-4bec-a3b4-60a7850dab48
+        - 500bb7ac-b681-40c0-9b5d-640532bcb2d5
+        - a6a4ed15-cc67-4ce1-b941-55535728f7b3
+        - 8aa44a75-ba5b-4885-9766-f3e81afdb567
+        - bdbc7125-3eb4-448f-8bb9-4727db624a36
+  no_of_columns: '5'
+  text_size: xs

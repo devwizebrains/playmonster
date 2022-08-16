@@ -1,0 +1,144 @@
+<div class="min-h-screen bg-center bg-cover flex flex-col justify-center" style="background-image: url('/img/front-door--bg.jpg');">
+  <div class="pt-8 pb-12 px-4 sm:px-6 bg-white overflow-hidden shadow-xl rounded-xl mx-auto lg:px-10">
+    <div class="mx-auto w-full max-w-sm lg:w-96" x-data="{ form: 'login' }">
+      <div class="text-center ">
+        <div class="text-brand-green-500 inline-block">
+          {{ partial:components/svg/mo }}
+        </div>
+        <h2 class="mt-4 text-3xl font-luckiest-guy text-gray-900" x-text="form == 'login' ? '{{ login_page:headline }}' : '{{ login_page:reset_headline }}'"></h2>
+        
+      </div>
+
+      <div class="mt-8 relative" >
+
+        <div 
+          x-show="form == 'login'"
+          class="w-full h-72" 
+          x-transition:enter="transform transition ease-in-out duration-500"
+          x-transition:enter-start="-translate-x-full" 
+          x-transition:enter-end="translate-x-0" 
+          x-transition:leave="absolute top-0 transform transition ease-in-out duration-500"
+          x-transition:leave-start="translate-x-0 opacity-75" 
+          x-transition:leave-end="-translate-x-full opacity-0" 
+        >
+          {{ user:login_form }}
+            {{ if errors }}
+                <div class="bg-red-300 text-red-800 transform -translate-y-5 px-4 py-2 border border-red-700 shadow-md rounded-lg">
+                    {{ errors }}
+                        {{ value }}<br>
+                    {{ /errors }}
+                </div>
+            {{ /if }}
+
+            {{ if success }}
+                <div class="bg-green-300 text-white p-2">
+                    {{ success }}<br>
+                </div>
+            {{ /if }}
+            <div class="space-y-5">
+              <div>
+                <label for="email" class="block text-sm font-medium text-gray-700">
+                  Email address
+                </label>
+                <div class="mt-1">
+                  <input id="email" name="email" type="email" autocomplete="email" value="{{ old:email }}" required class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                </div>
+              </div>
+  
+              <div class="space-y-1">
+                <label for="password" class="block text-sm font-medium text-gray-700">
+                  Password
+                </label>
+                <div class="mt-1">
+                  <input id="password" name="password" type="password" value="{{ old:password }}" autocomplete="current-password" required class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                </div>
+              </div>
+  
+              <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                  <input id="remember" name="remember" type="checkbox" class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded">
+                  <label for="remember" class="ml-2 block text-sm text-gray-900">
+                    Remember me
+                  </label>
+                </div>
+  
+                <div class="text-sm">
+                  <a href="#" @click.prevent="form = 'reset_pw'" class="font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none transition duration-200">
+                    Forgot your password?
+                  </a>
+                </div>
+              </div>
+  
+            </div>
+            <div class="mt-10">
+              <button type="submit" class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm font-medium text-white bg-brand-blue-300 hover:bg-brand-blue-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-blue-500 transition duration-200">
+                Sign in
+              </button>
+            </div>
+
+          {{ /user:login_form }}
+            
+        </div>
+
+        <div 
+          x-show="form == 'reset_pw'"
+          class="h-72" 
+          x-cloak
+          x-transition:enter="transform transition ease-in-out duration-500 " 
+          x-transition:enter-start="translate-x-full" 
+          x-transition:enter-end="translate-x-0" 
+          x-transition:leave="absolute w-full top-0 transform transition ease-in-out duration-500" 
+          x-transition:leave-start="translate-x-0 opacity-75" 
+          x-transition:leave-end="translate-x-full opacity-0" 
+        >
+          {{ user:forgot_password_form }}
+            {{ if errors }}
+                <div class="bg-red-300 text-white p-2">
+                    {{ errors }}
+                        {{ value }}<br>
+                    {{ /errors }}
+                </div>
+            {{ /if }}
+
+            {{ if success }}
+                <div class="bg-green-300 text-white p-2">
+                    {{ success }}<br>
+                </div>
+            {{ /if }}
+            <div class="space-y-6">
+              <div>
+                <label for="email" class="block text-sm font-medium text-gray-700">
+                  Email address
+                </label>
+                <div class="mt-1">
+                  <input id="email" name="email" type="email" autocomplete="email" value="{{ old:email }}" required class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                </div>
+              </div>
+              <div>
+                <button type="submit" class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-brand-blue-300 hover:bg-brand-blue-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-blue-500 transition duration-200">
+                  Send Reset Email
+                </button>
+                <div class="text-center mt-5 mx-5 pb-3 text-sm text-gray-700 markdown border-b">
+                  {{ login_page:reset_helper_text | markdown }}
+                </div>
+                <div class="text-xs text-center mt-2">
+                  <a href="#" @click.prevent="form = 'login'" class="inline-flex items-center font-medium text-gray-700 hover:text-indigo-500 focus:outline-none transition duration-200">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 17l-5-5m0 0l5-5m-5 5h12" />
+                    </svg>
+                    Return to login form
+                  </a>
+                </div>
+              </div>
+            </div>
+
+          {{ /user:forgot_password_form }}
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+

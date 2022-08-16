@@ -1,0 +1,11 @@
+@import 'tiny-slider/dist/tiny-slider.css';
+
+
+
+
+/* Rebel against Tiny Slider's oppression. */
+.tns-horizontal.tns-subpixel > .tns-item.flex {
+  @apply
+    flex
+  ;
+}

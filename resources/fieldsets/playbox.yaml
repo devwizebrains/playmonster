@@ -1,0 +1,162 @@
+title: Playbox
+fields:
+  -
+    handle: activate_playbox
+    field:
+      display: 'Activate Playbox'
+      type: toggle
+      icon: toggle
+      instructions: 'Toggle to activate a downloadable resource'
+      width: 50
+      listable: hidden
+  -
+    handle: playbox_asset
+    field:
+      mode: grid
+      container: downloadables
+      restrict: true
+      allow_uploads: true
+      max_files: 1
+      display: 'Playbox Asset'
+      type: assets
+      icon: assets
+      instructions: 'Use if you''d like to set your own downloadable asset instead of the auto generated one. Might need to use the `playbox_uuid` as the filename TBD'
+      width: 50
+      listable: hidden
+      if:
+        activate_playbox: 'equals true'
+        overwrite_downloadable: 'equals true'
+  -
+    handle: overwrite_downloadable
+    field:
+      display: 'Overwrite Downloadable'
+      type: revealer
+      icon: revealer
+      instructions: 'Upload your own playbox asset'
+      width: 50
+      listable: hidden
+      if:
+        activate_playbox: 'equals true'
+  -
+    handle: playbox_uuid
+    field:
+      type: uuid
+      read_only: false
+      id_prefix: playbox_
+      if:
+        activate_playbox: 'equals true'
+      listable: hidden
+      hidden: false
+      readonly: false
+  -
+    handle: playbox_headline
+    field:
+      input_type: text
+      antlers: false
+      display: 'Playbox Headline'
+      type: text
+      icon: text
+      instructions: 'If on a product, this will default to the product name'
+      listable: hidden
+      if:
+        activate_playbox: 'equals true'
+      width: 66
+  -
+    handle: hide_playbox_content
+    field:
+      display: 'Hide Playbox Content'
+      type: toggle
+      icon: toggle
+      instructions: 'Typically used on image slides, you can hide the white content box on the playbox asset.'
+      width: 33
+      listable: hidden
+      if:
+        activate_playbox: 'equals true'
+  -
+    handle: playbox_details
+    field:
+      collapse: false
+      sets:
+        set_additional_info:
+          display: 'Additional Info'
+          fields:
+            -
+              handle: hide_on
+              field:
+                inline: true
+                options:
+                  showroom: Showroom
+                  playbox: Playbox
+                display: 'Hide On'
+                type: checkboxes
+                icon: checkboxes
+                listable: hidden
+            -
+              handle: additional_info
+              field:
+                always_show_set_button: false
+                buttons:
+                  - bold
+                  - italic
+                  - unorderedlist
+                  - orderedlist
+                  - removeformat
+                save_html: false
+                toolbar_mode: fixed
+                link_noopener: false
+                link_noreferrer: false
+                target_blank: false
+                reading_time: false
+                fullscreen: false
+                allow_source: true
+                display: 'Additional Info'
+                type: bard
+                icon: bard
+                listable: hidden
+        set_array_list:
+          display: 'Array List'
+          fields:
+            -
+              handle: array_list
+              field:
+                fields:
+                  -
+                    handle: key
+                    field:
+                      input_type: text
+                      antlers: false
+                      display: Label
+                      type: text
+                      icon: text
+                      listable: hidden
+                  -
+                    handle: value
+                    field:
+                      input_type: text
+                      antlers: false
+                      display: Value
+                      type: text
+                      icon: text
+                      listable: hidden
+                  -
+                    handle: hide_on
+                    field:
+                      inline: true
+                      options:
+                        showroom: Showroom
+                        playbox: Playbox
+                      display: 'Hide On'
+                      type: checkboxes
+                      icon: checkboxes
+                      listable: hidden
+                mode: table
+                reorderable: true
+                display: 'Array List'
+                type: grid
+                icon: grid
+                listable: hidden
+      display: 'Playbox/Product Details'
+      type: replicator
+      icon: replicator
+      instructions: 'For Products this is shown in the top left corner. Toggle which rows you''d like to show on the downloadable asset'
+      listable: hidden

@@ -1,0 +1,105 @@
+{{ cache :key="slug" }}
+<div class="relative overflow-hidden bg-center bg-cover" style="{{ if page_background_image }}background-image: url({{ glide:page_background_image width='1440' height='780' fit='crop_focal' }});{{ /if }}background-color: {{ page_background_color }};">
+  <div data-js-carousel-y class="ease-in-out delay-100">
+    {{ slide_rows }}
+      {{ scope:rows }}
+      <div
+        data-js-row
+        class ="relative bg-center bg-cover"
+        style ="{{ if background_image }}background-image: url({{ glide:background_image width='1440' height='780' fit='crop_focal' }});{{ /if }}background-color: {{ background_color }};"
+      >
+        <div data-js-carousel-x="{{ index }}" class="ease-in-out">
+          {{ slides }}
+            {{ if enabled }}
+              <div class ="bg-center bg-cover relative" style="{{ if slide_background_image }}background-image: url({{ glide:slide_background_image width='1440' height='780' fit='crop_focal' }});{{ /if }}background-color: {{ slide_background_color }};">
+                {{ partial src="brand_pages/components/{type}" p_slide="{{ index }}" }}
+
+                {{ if page:playbox_add_all && rows:first && all_pb_items | count > 0 }}
+                  <div class="absolute z-20 bottom-0 right-0 mb-2 mr-2 transition-all duration-500">
+                    <button
+                      type="button"
+                      x-on:click.prevent="Spruce.store('playbox').addAllToBox({{ all_pb_items|sanitize }})"
+                      class="inline-flex items-center p-2 border border-transparent rounded-full shadow-sm text-white bg-brand-blue-300 hover:bg-brand-green-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition duration-200"
+                      title="Add All"
+                    >
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 13h6m-3-3v6m-9 1V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
+                      </svg>
+                    </button>
+                  </div>
+                {{ /if }}
+              </div>
+            {{ /if }}
+          {{ /slides }}
+        </div>
+
+
+        {{ if slides }}
+          <div
+            data-js-carousel-x-controls ="{{ index }}"
+            data-js-active-row-style    ='{{ if (slide_rows | count) > 1 }} transform: translateX(220px); {{ else }} transform: translateX(112px); {{ /if }}'
+            data-js-inactive-row-style  ='{{ if (slide_rows | count) > 1 }} transform: translateX(-100%); {{ else }} transform: translateX(112px); {{ /if }}'
+            class                       ="absolute bottom-0 flex items-center h-12 pr-6 transition-transform duration-100 bg-white rounded-tr-full"
+            style                       ="transform: translateX(-100%)"
+          >
+          {{ if back_link }}
+            <div class="w-16 h-full bg-white"></div>
+          {{ else }}
+            <div class="absolute bottom-0 w-12 h-full -ml-12 bg-white"></div>
+          {{ /if }}
+            {{ slides }}
+              <button
+                class                    ="h-full px-4 text-black transition-all duration-100 transform focus:outline-none {{ if first }}font-extrabold cursor-default{{ /if }} {{ if !first }}hover:scale-110{{ /if }}"
+                data-js-active-class     ="h-full px-4 font-extrabold text-black transition-all duration-100 cursor-default focus:outline-none"
+                data-js-inactive-class   ="h-full px-4 text-black transition-all duration-100 transform focus:outline-none hover:scale-110"
+                data-js-carousel-x-go-to ="{{ index }}"
+              >
+                {{ slide_name }}
+              </button>
+            {{ /slides }}
+          </div>
+        {{ /if }}
+      </div>
+      {{ /scope:rows }}
+    {{ /slide_rows }}
+  </div>
+</div>
+{{ /cache }}
+
+
+
+{{ section:prepend_to_nav_controls }}
+  {{ if back_link }}
+  <div class="h-full flex items-center px-4 border-r mr-2">
+    <a href="{{ back_link }}" title="{{ back_helper_text }}" class ="block text-brand-blue-300 hover:scale-125 transition-transform duration-100 transform focus:outline-none">
+      {{ partial:components/svg/nav_return }}
+    </a>
+  </div>
+  {{ /if }}
+{{ /section:prepend_to_nav_controls }}
+
+{{ section:append_to_nav_controls }}
+  {{ if (slide_rows | count) > 1 }}
+    <div data-js-carousel-y-controls class="flex h-full focus:outline-none">
+      <div class="border-l">
+        <button
+          class ="h-full px-3 text-gray-400 transition-colors transition-transform duration-100 transform cursor-default focus:outline-none"
+          data-js-carousel-y-controls-active-class   = "text-brand-blue-300 hover:scale-125"
+          data-js-carousel-y-controls-inactive-class = "text-gray-400 cursor-default"
+        >
+          {{ partial:components/svg/paginate_up }}
+        </button>
+      </div>
+      <div class="border-l">
+        <button
+          class ="h-full px-3 transition-colors transition-transform duration-100 transform text-brand-blue-300 hover:scale-125 focus:outline-none"
+          data-js-carousel-y-controls-active-class   = "text-brand-blue-300 hover:scale-125"
+          data-js-carousel-y-controls-inactive-class = "text-gray-400 cursor-default"
+        >
+          {{ partial:components/svg/paginate_down }}
+        </button>
+      </div>
+    </div>
+  {{ /if }}
+{{ /section:append_to_nav_controls }}
+

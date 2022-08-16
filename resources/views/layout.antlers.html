@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="{{ site:short_locale }}">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <title>{{ title ?? site:name }}</title>
+  <link rel="stylesheet" href="{{ mix src='css/site.css' }}">
+  <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
+</head>
+
+<body
+  x-data ="{ market: 'US', navOpen: false, pb: $store.playbox.items }"
+  x-init ="market = getCookie('market', 'US')"
+  :class ="{ 'h-screen ': navOpen }"
+  class  ="font-sans leading-normal bg-gray-200 text-grey-800 {{ if current_template == 'category_pages/show' }}overflow-x-hidden {{ elseif current_template == 'playbox.show' }}overflow-auto{{ else }}overflow-hidden{{ /if }}"
+>
+  {{ if current_template != 'playbox.show' && playbox_settings:activate_download }}
+    {{ partial:playbox/box }}
+  {{ /if }}
+
+  {{ template_content }}
+
+  <div class="fixed z-50 bottom-0 flex items-center h-12 pr-6 text-base font-semibold text-black bg-white rounded-tr-full">
+    {{ yield:prepend_to_nav_controls }}
+
+    <button
+      @click ="navOpen = !navOpen"
+      class  ="relative block pr-2 transition-transform duration-100 transform focus:outline-none hover:scale-110"
+    >
+      <div class="text-brand-green-500">
+        {{ partial:components/svg/mo }}
+      </div>
+    </button>
+
+    {{ yield:append_to_nav_controls }}
+  </div>
+
+
+  {{ partial:components/nav/nav }}
+  <script src="{{ mix src='/js/site.js' }}"></script>
+  <script>
+    Spruce.store('playbox', {
+      items: [],
+      totalCount() {
+        return this.items.length;
+      },
+      itemsGroupByBrand() {
+        return _.groupBy(this.items, item => {
+          return item.brand
+        })
+      },
+      itemIds() {
+        return _.keys(_.keyBy(this.items, 'id'));
+      },
+      addToBox($item) {
+        if (_.findIndex(this.items, {'id': $item.id}) < 0) {
+          this.items.push($item);
+        };
+      },
+      removeFromBox($item_id) {
+        this.items = _.filter(this.items, item => {
+          return item.id != $item_id;
+        });
+      },
+      addAllToBox($items) {
+        _.forEach($items, function($item) {
+          Spruce.store('playbox').addToBox($item);
+        });
+      }
+    }, true);
+  </script>
+</body>
+</html>

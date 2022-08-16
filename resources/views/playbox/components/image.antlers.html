@@ -1,0 +1,109 @@
+---
+image_variants:
+  small:
+    image_class: w-40vw -mt-16
+  medium:
+    image_class: w-60vw -mt-16
+  large:
+    image_class: w-75vw -mt-8
+  full_width:
+    image_class: w-full
+
+font_variants:
+  open_sans: 
+    classes: font-sans font-normal
+  open_sans_thin: 
+    classes: font-sans font-thin
+  open_sans_extralight: 
+    classes: font-sans font-extralight
+  open_sans_light: 
+    classes: font-sans font-light
+  open_sans_medium: 
+    classes: font-sans font-medium
+  open_sans_semibold: 
+    classes: font-sans font-semibold
+  open_sans_bold: 
+    classes: font-sans font-bold
+  open_sans_extrabold: 
+    classes: font-sans font-extrabold
+  open_sans_black: 
+    classes: font-sans font-black
+  luckiest_guy: 
+    classes: font-luckiest-guy font-normal
+
+text_position:
+  top:
+    classes: top-0
+    style: margin-top
+  bot:
+    classes: bottom-0
+    style: margin-bottom
+  mid:
+    classes: inset-x-auto
+---
+{{#
+  Pulled this directly from /brand_pages/components/image so we can best emmulate what goes on there
+#}}
+
+<div class="flex items-center justify-center w-full h-screen">
+  {{ if show_headline }}
+    <div class="absolute {{ array_get:view:text_position key='{headline_position}.classes' }}" {{ if headline_adjustment != 0 && headline_position != 'mid' }} style="{{ array_get:view:text_position key='{headline_position}.style' }}: {{ headline_adjustment }}px"{{ /if }}>
+      <h1 class="{{ headline_alignment }} leading-tight px-8 pb-20 {{ array_get:view:font_variants key='{font}.classes' }} break-words" style="font-size: {{ font_size }}px; color: {{ headline_color }};">
+        {{ headline }}
+      </h1>
+    </div>
+  {{ /if }}
+
+  {{ if image.extension === 'gif' }}
+    <img src="{{ image }}" class="{{ array_get:view:image_variants key='{size}.image_class' }}" alt="{{ alt }}">
+    
+  {{ elseif image.extension != 'gif' && size === 'small' }}
+    <img
+      srcset="{{ glide:image width='480' height='260' fit='max' }} 480w,
+              {{ glide:image width='520' height='282' fit='max' }} 520w,
+              {{ glide:image width='576' height='312' fit='max' }} 576w"
+      sizes="576px"                        
+      src="{{ glide:image width='576' height='312' fit='max' }}"
+      alt="{{ alt }}"
+      class="{{ array_get:view:image_variants key='small.image_class' }}"
+    >
+    
+  {{ elseif image.extension != 'gif' && size === 'medium' }}
+    <img
+      srcset="{{ glide:image width='640' height='347' fit='max' }} 640w,
+              {{ glide:image width='768' height='416' fit='max' }} 768w,
+              {{ glide:image width='860' height='466' fit='max' }} 860w"
+      sizes="860px"                        
+      src="{{ glide:image width='860' height='466' fit='max' }}"
+      alt="{{ alt }}"
+      class="{{ array_get:view:image_variants key='medium.image_class' }}"
+    >
+
+  {{ elseif image.extension != 'gif' && size === 'large' }}
+    <img
+      srcset="{{ glide:image width='768'  height='416' fit='max' }} 768w,
+              {{ glide:image width='960'  height='520' fit='max' }} 960w,
+              {{ glide:image width='1080' height='585' fit='max' }} 1080w"
+      sizes="1080px"                        
+      src="{{ glide:image width='1080' height='585' fit='max' }}"
+      alt="{{ alt }}"
+      class="{{ array_get:view:image_variants key='large.image_class' }}"
+    >
+
+  {{ elseif image.extension != 'gif' && size === 'full_width' }}
+    <img
+      srcset="{{ glide:image width='1024' height='555' fit='crop_focal' }} 1024w,
+              {{ glide:image width='1280' height='694' fit='crop_focal' }} 1280w,
+              {{ glide:image width='1440' height='780' fit='crop_focal' }} 1440w"
+      sizes="1440px"                        
+      src="{{ glide:image width='1440' height='780' fit='crop_focal' }}"
+      alt="{{ alt }}"
+      class="{{ array_get:view:image_variants key='full_width.image_class' }}"
+    >
+
+  {{ else }}
+
+    <img src="{{ glide:image width='860' height='466' fit='max' }}" alt="{{ alt }}">
+
+  {{ /if }}
+</div>

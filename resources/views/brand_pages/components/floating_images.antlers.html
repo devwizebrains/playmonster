@@ -1,0 +1,44 @@
+<div class="relative w-full h-screen bg-center bg-cover" style="background-image: url({{ glide:background_image width='1440' height='780' fit='crop_focal' }})">
+  {{ if fullscreen_looping_video }}
+    <div class="absolute top-0 left-0">
+      {{ partial:components/fullscreen_looping_video
+        :video            ="fullscreen_looping_video"
+         background_image ="{glide:image width='1440' height='780' fit='crop_focal}'"
+      }}
+    </div>
+  {{ /if }}
+
+
+  {{ animatable_images }}
+    {{ if reference_point_x === "center" && reference_point_y === "edge" }}
+      {{ partial:category_pages/components/animatable_image
+        p_append_css="margin-left: -{image:width|/:2|ensure_right:px}; margin-right: -{image:width|/:2|ensure_right:px};"
+      }}
+
+    {{ elseif reference_point_x === "edge" && reference_point_y === "center" }}
+      {{ partial:category_pages/components/animatable_image
+        p_append_css="margin-top: -{image:height|/:2|ensure_right:px}; margin-bottom: -{image:height|/:2|ensure_right:px};"
+      }}
+
+    {{ elseif reference_point_x === "center" && reference_point_y === "center" }}
+      {{ partial:category_pages/components/animatable_image
+        p_append_css="margin-top: -{image:height|/:2|ensure_right:px}; margin-bottom: -{image:height|/:2|ensure_right:px}; margin-left: -{image:width|/:2|ensure_right:px}; margin-right: -{image:width|/:2|ensure_right:px};"
+      }}
+
+    {{ elseif reference_point_x === "edge" && reference_point_y === "edge" }}
+      {{ partial:category_pages/components/animatable_image }}
+    {{ /if }}
+  {{ /animatable_images }}
+
+
+  {{ image_links }}
+    <a
+      href  ="{{ brand_page:url }}"
+      class ="absolute block {{ show_red_border ? 'border-red-600 border-4 shadow-dark' : '' }}"
+      style ="{{ css }}"
+    ></a>
+  {{ /image_links }}
+
+  {{ animation_keyframes ensure_left="<style>" ensure_right="</style>" }}
+  
+</div>

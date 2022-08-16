@@ -1,0 +1,42 @@
+admin:
+  title: Admin
+  permissions:
+    - super
+brand_page_contributor:
+  title: 'Brand Page Contributor'
+  permissions:
+    - 'access cp'
+    - 'view brand_pages entries'
+    - 'edit brand_pages entries'
+    - 'create brand_pages entries'
+    - 'publish brand_pages entries'
+    - 'view images assets'
+    - 'upload images assets'
+    - 'view videos assets'
+    - 'upload videos assets'
+    - 'edit other authors brand_pages entries'
+    - 'publish other authors brand_pages entries'
+asset_contributor:
+  title: 'Asset Contributor'
+  permissions:
+    - 'access cp'
+    - 'view assets assets'
+    - 'upload assets assets'
+    - 'edit assets assets'
+    - 'move assets assets'
+    - 'rename assets assets'
+    - 'delete assets assets'
+presenter:
+  title: Presenter
+  permissions:
+    - 'view brand_pages entries'
+    - 'view category_pages entries'
+    - 'view pages entries'
+    - 'view powerpoints entries'
+rep:
+  title: Rep
+  permissions:
+    - 'view brand_pages entries'
+    - 'view category_pages entries'
+    - 'view pages entries'
+    - 'view powerpoints entries'

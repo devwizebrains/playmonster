@@ -1,0 +1,78 @@
+<div class="min-h-screen bg-brand-blue-300 flex flex-col justify-center py-12">
+  <div class="bg-white relative pt-6 overflow-hidden shadow-xl rounded-xl mx-auto w-full max-w-3xl">
+    <h2 class="text-3xl font-luckiest-guy text-center">The Playbox </h2>
+    <div class="absolute top-0 right-0 mt-3 mr-3">
+      <button type="button" @click.prevent="$store.playbox.items = []" class="w-full inline-flex justify-center px-2 py-1 border border-gray-500 rounded-md sm:ml-3 font-medium text-gray-600 hover:text-red-700 hover:border-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:w-auto text-xs transition duration-200">
+        Clear All
+      </button>
+    </div>
+ 
+    <div class="space-y-12 my-12">
+      <template x-for="[brand, items] in Object.entries($store.playbox.itemsGroupByBrand())" :key="brand">
+        <div>
+          <div class="flex items-baseline px-8">
+            <h3 x-text="brand" class="text-2xl font-medium tracking-tight"></h3>
+            <a x-bind:href="items[0].brand_url" class="ml-2 text-gray-600 hover:text-gray-900 transition duration-200">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+              </svg>
+            </a>
+          </div>
+          <ul class="border-t pt-3 space-y-4 px-8">
+            <template x-for="item in items">
+              <li class="flex justify-between items-center">
+                <div class="h-16 w-24 bg-center bg-cover shadow-md" style="" x-bind:style="item.isGroup == 'true' ? 'background-image: url(/storage/'+item.id+'0.jpeg)' : 'background-image: url(/storage/'+item.id+'.jpeg)'"></div>
+                <div class="flex-grow px-4 leading-5">
+                  <span x-text="item.name" class="block text-lg"></span>
+                  <span x-text="item.id" class="block text-sm text-gray-500 leading-4"></span>
+                </div>
+                <button @click.prevent="$store.playbox.removeFromBox(item.id)" class="ml-1 text-gray-500 focus:outline-none hover:text-red-600 transition duration-200">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                  </svg>
+                </button>
+              </li>
+            </template>
+          </ul>
+        </div>  
+      </template>
+    </div>
+    <div
+      x-data="{
+        file_name: '',
+        generateDownloadUrl: function() {       
+          axios.post('/pb/create', {files: $store.playbox.items}, {responseType: 'blob'})
+            .then(response => {
+              let url = window.URL.createObjectURL(new Blob([response.data], {type:'application/zip'}));
+
+              let link = document.createElement('a');
+              link.href = url;
+              link.setAttribute('download', this.file_name ? this.file_name+'.zip' : 'pb-{{ now format="Y-d-m @ g-ia" }}.zip');
+              document.body.appendChild(link);
+              link.click();
+            })
+            .catch(error => {
+              console.log(error);
+            })
+        }
+      }"
+      <div class="bg-gray-200 px-4 py-3 sm:px-6 sm:flex justify-end items-center" 
+    >
+       <div class="w-full max-w-xs">
+        <label for="file_name" class="sr-only">Filename</label>
+        <input id="file_name" name="file_name" type="text" class="w-full border border-white shadow-sm px-4 py-2 placeholder-gray-500 focus:border-blue-400 focus:outline-none rounded-md" x-model="file_name" placeholder="Filename">
+       </div>
+      <button 
+        x-on:click.prevent="generateDownloadUrl()"
+        type="button"
+        class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-200 shadow-sm px-4 py-2 bg-blue-500 text-base font-medium text-white hover:bg-brand-green-500 hover:text-white transition duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3M3 17V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
+        </svg>
+        Download Assets
+      </button>
+      
+    </div>
+  </div>
+</div>

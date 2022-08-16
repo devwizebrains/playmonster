@@ -1,0 +1,8 @@
+{{# PurgeCSS safelist: z-10 z-20 z-30 z-40 z-50 #}}
+{{ image }}
+  <img
+    src   ="{{ if extension === 'gif' }}{{ url }}{{ else }}{{ glide:url }}{{ /if }}"
+    class ="absolute {{ z_index ensure_left='z-' }}"
+    style ="{{ css|ensure_right:; }} {{ p_append_css|ensure_right:; }}"
+  >
+{{ /image }}

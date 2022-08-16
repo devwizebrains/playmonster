@@ -1,0 +1,27 @@
+title: 'Brand Page Floating Image Position'
+fields:
+  -
+    handle: floating_images_positions
+    field:
+      mode: table
+      reorderable: true
+      type: grid
+      listable: hidden
+      display: 'Floating Images'' Positions'
+      add_row: 'Add Image Position'
+      instructions: 'These are slide-specific positions for the floating images. The row number here must match that of the corresponding image above.'
+      fields:
+        -
+          handle: position
+          field:
+            theme: material
+            mode: css
+            indent_type: tabs
+            indent_size: 2
+            key_map: default
+            line_numbers: false
+            line_wrapping: true
+            type: code
+            listable: hidden
+            display: Position
+            instructions: 'Use CSS properties to position the image.'

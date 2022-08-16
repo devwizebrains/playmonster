@@ -1,0 +1,1046 @@
+title: 'Brand Page'
+sections:
+  main:
+    display: Main
+    fields:
+      -
+        handle: title
+        field:
+          type: text
+          required: true
+          validate:
+            - required
+      -
+        handle: page_background_color
+        field:
+          swatches:
+            - '#333333'
+            - '#eeeeee'
+            - '#1C9AD6'
+            - '#2E3192'
+            - '#C0D230'
+            - '#758938'
+          theme: classic
+          lock_opacity: true
+          default_color_mode: HEXA
+          color_modes:
+            - hex
+            - rgba
+            - cmyk
+          type: color
+          instructions: 'If an image is configured, the image will appear over the background color.'
+          width: 33
+          listable: hidden
+          display: 'Page Background Color'
+          default: '#333333'
+          validate:
+            - required
+      -
+        handle: page_background_image
+        field:
+          mode: grid
+          container: assets
+          restrict: false
+          allow_uploads: true
+          max_files: 1
+          type: assets
+          instructions: 'Dimensions: `1440 X 780`. Applies to the entire page. Higher resolution images will be downsized and cropped to the focal point.'
+          listable: hidden
+          display: 'Page Background Image'
+          width: 66
+      -
+        handle: slide_rows
+        field:
+          fields:
+            -
+              handle: background_color
+              field:
+                swatches:
+                  - '#FFFFFF00'
+                  - '#333333'
+                  - '#eeeeee'
+                  - '#1C9AD6'
+                  - '#2E3192'
+                  - '#C0D230'
+                  - '#758938'
+                theme: classic
+                lock_opacity: false
+                default_color_mode: HEXA
+                color_modes:
+                  - hex
+                  - rgba
+                  - cmyk
+                type: color
+                instructions: 'Will appear over the Page Background Color/Image, but under the Row Image.'
+                width: 33
+                listable: hidden
+                default: '#FFFFFF00'
+                display: 'Row Background Color'
+            -
+              handle: background_image
+              field:
+                mode: grid
+                container: assets
+                restrict: false
+                allow_uploads: true
+                max_files: 1
+                type: assets
+                instructions: 'Dimensions: `1440 X 780`. Applies to all slides in this row (can be overridden per-slide). Higher resolution images will be downsized and cropped to the focal point.'
+                listable: hidden
+                display: 'Row Background Image'
+                width: 66
+            -
+              handle: enabled
+              field:
+                type: toggle
+                width: 25
+                listable: hidden
+                display: Enabled
+                instructions: 'On by default.'
+                default: true
+            -
+              handle: slides
+              field:
+                sets:
+                  fullscreen_looping_video:
+                    display: 'Fullscreen Looping Video'
+                    fields:
+                      -
+                        handle: slide_name
+                        field:
+                          input_type: text
+                          type: text
+                          listable: hidden
+                          display: 'Slide Name'
+                      -
+                        handle: video
+                        field:
+                          mode: grid
+                          restrict: false
+                          allow_uploads: true
+                          max_files: 1
+                          type: assets
+                          listable: hidden
+                          display: Video
+                          container: assets
+                      -
+                        import: brand_page_floating_image_position
+                  youtube_video:
+                    display: 'YouTube Video'
+                    fields:
+                      -
+                        handle: slide_name
+                        field:
+                          input_type: text
+                          type: text
+                          listable: hidden
+                          display: 'Slide Name'
+                      -
+                        handle: slide_background_color
+                        field:
+                          swatches:
+                            - '#FFFFFF00'
+                            - '#333333'
+                            - '#eeeeee'
+                            - '#1C9AD6'
+                            - '#2E3192'
+                            - '#C0D230'
+                            - '#758938'
+                          theme: classic
+                          lock_opacity: false
+                          default_color_mode: HEXA
+                          color_modes:
+                            - hex
+                            - rgba
+                            - cmyk
+                          type: color
+                          instructions: 'Will appear over the Page Background Color/Image, but under the Slide Image.'
+                          width: 33
+                          listable: hidden
+                          default: '#FFFFFF00'
+                          display: 'Slide Background Color'
+                      -
+                        handle: slide_background_image
+                        field:
+                          mode: grid
+                          container: assets
+                          restrict: false
+                          allow_uploads: true
+                          max_files: 1
+                          type: assets
+                          instructions: 'Dimensions: 1440 X 780. Applies only to this slide. Higher resolution images will be downsized and cropped to the focal point.'
+                          listable: hidden
+                          display: 'Slide Background Image'
+                          width: 66
+                      -
+                        handle: video
+                        field:
+                          type: video
+                          listable: hidden
+                          display: Video
+                          width: 75
+                      -
+                        handle: size
+                        field:
+                          options:
+                            full_width: Full-width
+                            large: Large
+                            medium: Medium
+                            small: Small
+                          inline: false
+                          type: radio
+                          width: 25
+                          listable: hidden
+                          display: Size
+                          default: full_width
+                      -
+                        import: brand_page_floating_image_position
+                  slidedeck:
+                    display: 'Slide Deck'
+                    fields:
+                      -
+                        import: playbox
+                      -
+                        handle: slide_name
+                        field:
+                          input_type: text
+                          type: text
+                          listable: hidden
+                          display: 'Slide Name'
+                      -
+                        handle: slide_background_color
+                        field:
+                          swatches:
+                            - '#FFFFFF00'
+                            - '#333333'
+                            - '#eeeeee'
+                            - '#1C9AD6'
+                            - '#2E3192'
+                            - '#C0D230'
+                            - '#758938'
+                          theme: classic
+                          lock_opacity: false
+                          default_color_mode: HEXA
+                          color_modes:
+                            - hex
+                            - rgba
+                            - cmyk
+                          type: color
+                          instructions: 'Will appear over the Page Background Color/Image, but under the Slide Image.'
+                          width: 33
+                          listable: hidden
+                          default: '#FFFFFF00'
+                          display: 'Slide Background Color'
+                      -
+                        handle: slide_background_image
+                        field:
+                          mode: grid
+                          container: assets
+                          restrict: false
+                          allow_uploads: true
+                          max_files: 1
+                          type: assets
+                          instructions: 'Dimensions: 1440 X 780. Applies only to this slide. Higher resolution images will be downsized and cropped to the focal point.'
+                          listable: hidden
+                          display: 'Slide Background Image'
+                          width: 66
+                      -
+                        handle: slidedeck_background_color
+                        field:
+                          swatches:
+                            - '#FFFFFF00'
+                            - '#333333'
+                            - '#eeeeee'
+                            - '#1C9AD6'
+                            - '#2E3192'
+                            - '#C0D230'
+                            - '#758938'
+                          theme: classic
+                          lock_opacity: false
+                          default_color_mode: HEXA
+                          color_modes:
+                            - hex
+                            - rgba
+                            - cmyk
+                          type: color
+                          instructions: 'Will appear behind the individual slide images but will not be full screen like the Slide Background Color. Very useful if slides contain transparent pngs that need a solid background.'
+                          listable: hidden
+                          default: '#FFFFFF00'
+                          display: 'Slide Deck Background Color'
+                      -
+                        handle: slides
+                        field:
+                          mode: grid
+                          container: assets
+                          restrict: false
+                          allow_uploads: true
+                          display: Slides
+                          type: assets
+                          icon: assets
+                          instructions: 'Ideal image size 1920px X 960px (or if you want to future proof, 2560px X 1280px). You can upload as large as you want, in any ratio, and the system will downsize it to fit the container and load quickly.'
+                          listable: hidden
+                  product_gallery:
+                    display: 'Product Gallery'
+                    fields:
+                      -
+                        handle: slide_name
+                        field:
+                          input_type: text
+                          type: text
+                          listable: hidden
+                          display: 'Slide Name'
+                      -
+                        handle: slide_background_color
+                        field:
+                          swatches:
+                            - '#FFFFFF00'
+                            - '#333333'
+                            - '#eeeeee'
+                            - '#1C9AD6'
+                            - '#2E3192'
+                            - '#C0D230'
+                            - '#758938'
+                          theme: classic
+                          lock_opacity: false
+                          default_color_mode: HEXA
+                          color_modes:
+                            - hex
+                            - rgba
+                            - cmyk
+                          type: color
+                          instructions: 'Will appear over the Page Background Color/Image, but under the Slide Image.'
+                          width: 33
+                          listable: hidden
+                          default: '#FFFFFF00'
+                          display: 'Slide Background Color'
+                      -
+                        handle: slide_background_image
+                        field:
+                          mode: grid
+                          container: assets
+                          restrict: false
+                          allow_uploads: true
+                          max_files: 1
+                          type: assets
+                          instructions: 'Dimensions: 1440 X 780. Applies only to this slide. Higher resolution images will be downsized and cropped to the focal point.'
+                          listable: hidden
+                          display: 'Slide Background Image'
+                          width: 66
+                      -
+                        handle: content_background_color
+                        field:
+                          theme: classic
+                          lock_opacity: false
+                          default_color_mode: HEXA
+                          color_modes:
+                            - hex
+                            - rgba
+                          type: color
+                          width: 33
+                          listable: hidden
+                          display: 'Content Background Color'
+                          default: '#ffffff'
+                      -
+                        handle: content_heading_color
+                        field:
+                          theme: classic
+                          lock_opacity: false
+                          default_color_mode: HEXA
+                          color_modes:
+                            - hex
+                            - rgba
+                          type: color
+                          width: 33
+                          listable: hidden
+                          display: 'Content Heading Color'
+                          default: '#1C9AD6'
+                      -
+                        handle: content_text_color
+                        field:
+                          options:
+                            black: Black
+                            white: White
+                          inline: true
+                          type: radio
+                          listable: hidden
+                          display: 'Content Text Color'
+                          default: black
+                          width: 33
+                      -
+                        handle: products
+                        field:
+                          fields:
+                            -
+                              import: playbox
+                            -
+                              handle: product_name
+                              field:
+                                input_type: text
+                                type: text
+                                listable: hidden
+                                display: 'Product Name'
+                            -
+                              handle: item_number
+                              field:
+                                input_type: text
+                                type: text
+                                width: 50
+                                listable: hidden
+                                display: 'Item Number'
+                            -
+                              handle: release_date
+                              field:
+                                input_type: text
+                                type: text
+                                width: 50
+                                listable: hidden
+                                display: 'Release Date'
+                            -
+                              handle: additional_info
+                              field:
+                                buttons:
+                                  - bold
+                                  - italic
+                                  - unorderedlist
+                                  - orderedlist
+                                  - removeformat
+                                save_html: false
+                                toolbar_mode: fixed
+                                link_noopener: false
+                                link_noreferrer: false
+                                target_blank: false
+                                reading_time: false
+                                fullscreen: true
+                                allow_source: true
+                                type: bard
+                                listable: hidden
+                                display: 'Additional Info'
+                            -
+                              handle: playbox_max_images
+                              field:
+                                step: 1
+                                min: 1
+                                max: 3
+                                default: 3
+                                append: max
+                                width: 50
+                                display: 'Playbox Max Images'
+                                type: range
+                                icon: range
+                                instructions: 'The default Max is `3` but you may set a lower number if needed.'
+                                listable: hidden
+                                if:
+                                  activate_playbox: 'equals true'
+                            -
+                              handle: playbox_asset_height
+                              field:
+                                step: 1
+                                min: 50
+                                max: 100
+                                default: 70
+                                append: vh
+                                display: 'Playbox Asset Height'
+                                type: range
+                                icon: range
+                                instructions: 'Somewhat adjustable way to control the size of the images.'
+                                width: 50
+                                listable: hidden
+                                if:
+                                  activate_playbox: 'equals true'
+                            -
+                              handle: images
+                              field:
+                                mode: grid
+                                container: assets
+                                restrict: false
+                                allow_uploads: true
+                                type: assets
+                                listable: hidden
+                                display: Images
+                                instructions: 'Ideal image size 1920px X 960px (or if you want to future proof, 2560px X 1280px). You can upload as large as you want, in any ratio, and the system will downsize it to fit the container and load quickly.'
+                            -
+                              handle: product_videos
+                              field:
+                                fields:
+                                  -
+                                    handle: video
+                                    field:
+                                      type: video
+                                      listable: hidden
+                                      display: Video
+                                  -
+                                    handle: thumbnail
+                                    field:
+                                      mode: grid
+                                      container: assets
+                                      restrict: false
+                                      allow_uploads: true
+                                      max_files: 1
+                                      type: assets
+                                      instructions: 'This will appear in the product gallery navigation to represent the video.'
+                                      listable: hidden
+                                      display: Thumbnail
+                                mode: table
+                                add_row: 'Add Video'
+                                reorderable: true
+                                type: grid
+                                instructions: 'These will appear as the last slides in the product gallery.'
+                                listable: hidden
+                                display: 'Product Videos'
+                          mode: stacked
+                          add_row: 'Add Product'
+                          reorderable: true
+                          type: grid
+                          listable: hidden
+                          display: Products
+                  image:
+                    display: Image
+                    fields:
+                      -
+                        import: playbox
+                      -
+                        handle: slide_name
+                        field:
+                          input_type: text
+                          type: text
+                          listable: hidden
+                          display: 'Slide Name'
+                      -
+                        handle: slide_background_color
+                        field:
+                          swatches:
+                            - '#FFFFFF00'
+                            - '#333333'
+                            - '#eeeeee'
+                            - '#1C9AD6'
+                            - '#2E3192'
+                            - '#C0D230'
+                            - '#758938'
+                          theme: classic
+                          lock_opacity: false
+                          default_color_mode: HEXA
+                          color_modes:
+                            - hex
+                            - rgba
+                            - cmyk
+                          type: color
+                          instructions: 'Will appear over the Page Background Color/Image, but under the Slide Image.'
+                          width: 33
+                          listable: hidden
+                          default: '#FFFFFF00'
+                          display: 'Slide Background Color'
+                      -
+                        handle: slide_background_image
+                        field:
+                          mode: grid
+                          container: assets
+                          restrict: false
+                          allow_uploads: true
+                          max_files: 1
+                          type: assets
+                          instructions: 'Dimensions: 1440 X 780. Applies only to this slide. Higher resolution images will be downsized and cropped to the focal point.'
+                          listable: hidden
+                          display: 'Slide Background Image'
+                          width: 66
+                      -
+                        handle: image
+                        field:
+                          mode: grid
+                          container: assets
+                          restrict: false
+                          allow_uploads: true
+                          max_files: 1
+                          type: assets
+                          width: 75
+                          listable: hidden
+                          display: Image
+                      -
+                        handle: size
+                        field:
+                          options:
+                            full_width: Full-width
+                            large: Large
+                            medium: Medium
+                            small: Small
+                          inline: false
+                          type: radio
+                          width: 25
+                          listable: hidden
+                          display: Size
+                          default: full_width
+                      -
+                        handle: show_headline
+                        field:
+                          type: toggle
+                          listable: hidden
+                          display: 'Show Headline'
+                          instructions: 'The headline will be displayed over the image, based on your alignment options.'
+                      -
+                        handle: headline
+                        field:
+                          input_type: text
+                          type: text
+                          listable: hidden
+                          display: Headline
+                          instructions: 'You may use a `<br>` to force a line break if necessary!'
+                          antlers: false
+                          if:
+                            show_headline: 'equals true'
+                      -
+                        handle: font_size
+                        field:
+                          default: 32
+                          step: 1
+                          min: 12
+                          max: 120
+                          type: range
+                          listable: hidden
+                          display: 'Font Size'
+                          width: 75
+                          append: px
+                          if:
+                            show_headline: 'equals true'
+                      -
+                        handle: headline_color
+                        field:
+                          swatches:
+                            - '#ffffff'
+                            - '#333333'
+                            - '#eeeeee'
+                            - '#1C9AD6'
+                            - '#2E3192'
+                            - '#C0D230'
+                            - '#758938'
+                          theme: classic
+                          lock_opacity: true
+                          default_color_mode: HEX
+                          color_modes:
+                            - hex
+                            - rgb
+                            - cmyk
+                          type: color
+                          width: 25
+                          listable: hidden
+                          default: '#FFFFFF'
+                          display: Color
+                          if:
+                            show_headline: 'equals true'
+                      -
+                        handle: headline_position
+                        field:
+                          options:
+                            top: Top
+                            mid: Middle
+                            bot: Bottom
+                          default: top
+                          inline: true
+                          type: radio
+                          listable: hidden
+                          display: 'Headline Position'
+                          width: 50
+                          if:
+                            show_headline: 'equals true'
+                      -
+                        handle: headline_alignment
+                        field:
+                          options:
+                            text-left: Left
+                            text-center: Center
+                            text-right: Right
+                          default: text-left
+                          inline: true
+                          type: radio
+                          listable: hidden
+                          display: 'Headline Alignment'
+                          width: 50
+                          if:
+                            show_headline: 'equals true'
+                      -
+                        handle: headline_adjustment
+                        field:
+                          default: 0
+                          step: 1
+                          min: 0
+                          max: 500
+                          type: range
+                          listable: hidden
+                          display: Adjustment
+                          append: px
+                          instructions: 'When `headline_position` is **Top** adjustment moves down from top. **Bottom** will move it up from bottom.'
+                          if:
+                            show_headline: 'equals true'
+                            headline_position: '!== mid'
+                      -
+                        handle: font
+                        field:
+                          options:
+                            open_sans: 'Open Sans'
+                            open_sans_thin: 'Open Sans Thin'
+                            open_sans_extralight: 'Open Sans ExtraLight'
+                            open_sans_light: 'Open Sans Light'
+                            open_sans_medium: 'Open Sans Medium'
+                            open_sans_semibold: 'Open Sans SemiBold'
+                            open_sans_bold: 'Open Sans Bold'
+                            open_sans_extrabold: 'Open Sans ExtraBold'
+                            open_sans_black: 'Open Sans Black'
+                            luckiest_guy: 'Luckiest Guy'
+                          inline: true
+                          default: open_sans
+                          type: radio
+                          listable: hidden
+                          display: Font
+                          if:
+                            show_headline: 'equals true'
+                  html:
+                    display: HTML
+                    instructions: 'Supercalifragilisticexpialidocious! (Use at your own wonderful risk, Mary Poppins.)'
+                    fields:
+                      -
+                        import: playbox
+                      -
+                        handle: slide_name
+                        field:
+                          input_type: text
+                          type: text
+                          listable: hidden
+                          display: 'Slide Name'
+                      -
+                        handle: slide_background_color
+                        field:
+                          swatches:
+                            - '#FFFFFF00'
+                            - '#333333'
+                            - '#eeeeee'
+                            - '#1C9AD6'
+                            - '#2E3192'
+                            - '#C0D230'
+                            - '#758938'
+                          theme: classic
+                          lock_opacity: false
+                          default_color_mode: HEXA
+                          color_modes:
+                            - hex
+                            - rgba
+                            - cmyk
+                          type: color
+                          instructions: 'Will appear over the Page Background Color/Image, but under the Slide Image. Adding a background will wrap the html code with `h-screen w-screen` classes so the background will fill the entire screen.'
+                          width: 33
+                          listable: hidden
+                          display: 'Slide Background Color'
+                      -
+                        handle: slide_background_image
+                        field:
+                          mode: grid
+                          container: assets
+                          restrict: false
+                          allow_uploads: true
+                          max_files: 1
+                          type: assets
+                          instructions: 'Dimensions: 1440 X 780. Applies only to this slide. Higher resolution images will be downsized and cropped to the focal point. Adding a background will wrap the html code with `h-screen w-screen` classes so the background will fill the entire screen.'
+                          listable: hidden
+                          display: 'Slide Background Image'
+                          width: 66
+                      -
+                        handle: html
+                        field:
+                          theme: material
+                          mode: htmlmixed
+                          indent_type: tabs
+                          indent_size: 2
+                          key_map: sublime
+                          line_numbers: true
+                          line_wrapping: true
+                          type: code
+                          listable: hidden
+                          display: HTML
+                          instructions: 'To follow the design system you can use classes from https://tailwindcss.com/docs (these will vary a little in our implementation.)'
+                      -
+                        handle: css
+                        field:
+                          theme: material
+                          mode: css
+                          indent_type: tabs
+                          indent_size: 2
+                          key_map: sublime
+                          line_numbers: true
+                          line_wrapping: true
+                          type: code
+                          listable: hidden
+                          display: CSS
+                          instructions: 'Do not add &lt;style&gt; tags. <br> When creating new class names, avoid the ones used in https://tailwindcss.com/docs.'
+                  floating_images:
+                    display: 'Floating Images'
+                    fields:
+                      -
+                        handle: slide_name
+                        field:
+                          input_type: text
+                          type: text
+                          listable: hidden
+                          display: 'Slide Name'
+                      -
+                        handle: slide_background_color
+                        field:
+                          swatches:
+                            - '#FFFFFF00'
+                            - '#333333'
+                            - '#eeeeee'
+                            - '#1C9AD6'
+                            - '#2E3192'
+                            - '#C0D230'
+                            - '#758938'
+                          theme: classic
+                          lock_opacity: false
+                          default_color_mode: HEXA
+                          color_modes:
+                            - hex
+                            - rgba
+                            - cmyk
+                          type: color
+                          instructions: 'Will appear over the Page Background Color/Image, but under the Slide Image.'
+                          width: 33
+                          listable: hidden
+                          default: '#FFFFFF00'
+                          display: 'Slide Background Color'
+                      -
+                        handle: slide_background_image
+                        field:
+                          mode: grid
+                          container: assets
+                          restrict: false
+                          allow_uploads: true
+                          max_files: 1
+                          type: assets
+                          instructions: 'Dimensions: 1440 X 780. Applies only to this slide. Higher resolution images will be downsized and cropped to the focal point.'
+                          listable: hidden
+                          display: 'Slide Background Image'
+                          width: 66
+                      -
+                        handle: animation_keyframes
+                        field:
+                          theme: material
+                          mode: css
+                          indent_type: tabs
+                          indent_size: 2
+                          key_map: default
+                          line_numbers: true
+                          line_wrapping: true
+                          type: code
+                          instructions: 'Define keyframes for this page''s animations here and use the name in the CSS fields below.'
+                          listable: hidden
+                          display: 'Animation Keyframes'
+                          default: |-
+                            @keyframes animation-name {
+                              0%   { opacity: 0; }
+                              100% { opacity: 0; }
+                            }
+                      -
+                        handle: animatable_images
+                        field:
+                          fields:
+                            -
+                              handle: image
+                              field:
+                                mode: grid
+                                container: assets
+                                restrict: false
+                                allow_uploads: true
+                                max_files: 1
+                                type: assets
+                                listable: hidden
+                                display: Image
+                                width: 50
+                            -
+                              handle: reference_point_x
+                              field:
+                                options:
+                                  edge: 'Left/Right Edge'
+                                  center: Center
+                                inline: false
+                                type: radio
+                                instructions: 'Allows you to select the reference point as the center, or the edge of the image.'
+                                listable: hidden
+                                display: 'X-Axis Reference Point'
+                                width: 25
+                                default: center
+                            -
+                              handle: reference_point_y
+                              field:
+                                options:
+                                  edge: 'Top/Bottom Edge'
+                                  center: Center
+                                inline: false
+                                type: radio
+                                instructions: 'Allows you to select the reference point as the center, or the edge of the image.'
+                                listable: hidden
+                                display: 'Y-Axis Reference Point'
+                                width: 25
+                                default: center
+                            -
+                              handle: css
+                              field:
+                                theme: material
+                                mode: css
+                                indent_type: tabs
+                                indent_size: 2
+                                key_map: default
+                                line_numbers: true
+                                line_wrapping: true
+                                type: code
+                                width: 75
+                                listable: hidden
+                                display: CSS
+                                default: |-
+                                  /* animation: animation-name 3s linear infinite; */
+                                  top: 0%;
+                                  left: 0%;
+                            -
+                              handle: z_index
+                              field:
+                                options:
+                                  10: '10'
+                                  20: '20'
+                                  30: '30'
+                                  40: '40'
+                                  50: '50'
+                                  auto: Auto
+                                inline: false
+                                type: radio
+                                width: 25
+                                listable: hidden
+                                display: Z-Index
+                                default: auto
+                                instructions: 'Higher numbers layer on top of lower numbers.'
+                          mode: stacked
+                          add_row: 'Add Image'
+                          reorderable: true
+                          type: grid
+                          listable: hidden
+                          display: 'Floating Images'
+                      -
+                        handle: image_links
+                        field:
+                          fields:
+                            -
+                              handle: brand_page
+                              field:
+                                max_items: 1
+                                mode: typeahead
+                                collections:
+                                  - brand_pages
+                                  - category_pages
+                                type: entries
+                                listable: hidden
+                                display: Link
+                                instructions: 'Link to a Brand or Category page'
+                            -
+                              handle: css
+                              field:
+                                theme: material
+                                mode: css
+                                indent_type: tabs
+                                indent_size: 2
+                                key_map: default
+                                line_numbers: true
+                                line_wrapping: true
+                                type: code
+                                listable: hidden
+                                display: CSS
+                                default: |-
+                                  top: 20%;
+                                  left: 20%;
+                                  width: 20%;
+                                  height: 20%;
+                                width: 75
+                            -
+                              handle: show_red_border
+                              field:
+                                type: toggle
+                                instructions: 'For positioning purposes. Always disable this when you''re done positioning your links how you like them.'
+                                listable: hidden
+                                display: 'Show Red Border'
+                                width: 25
+                          mode: stacked
+                          add_row: 'Add Link Block'
+                          reorderable: true
+                          type: grid
+                          listable: hidden
+                          display: 'Link Block'
+                          instructions: 'Square links that lay on top of the page.'
+                type: replicator
+                listable: hidden
+                display: Slides
+                instructions: 'Add slides below. Each row MUST contain at least one slide.'
+                collapse: false
+          mode: stacked
+          reorderable: true
+          type: grid
+          listable: hidden
+          display: Rows
+          instructions: 'A "Row" is a horizontal slider.'
+          add_row: 'Add Row'
+  sidebar:
+    display: Sidebar
+    fields:
+      -
+        handle: slug
+        field:
+          type: slug
+          required: true
+          localizable: true
+          validate:
+            - required
+      -
+        handle: playbox_add_all
+        field:
+          display: 'Playbox Add All'
+          type: toggle
+          icon: toggle
+          instructions: 'Toggle to add an option to "Add All" Playbox assets to the box'
+          listable: hidden
+      -
+        handle: market
+        field:
+          options:
+            us: US
+            uk: UK
+            int: International
+          multiple: false
+          max_items: 1
+          clearable: false
+          searchable: true
+          taggable: true
+          push_tags: true
+          cast_booleans: false
+          display: Market
+          type: select
+          icon: select
+          instructions: 'Only used internally to help filter'
+          listable: hidden
+  section_navigation:
+    display: Navigation
+    fields:
+      -
+        import: back_button
+        prefix: back_
+      -
+        handle: global_section
+        field:
+          display: 'Global Section'
+          type: section
+          icon: section
+          instructions: 'These settings are applied globally when this page is referenced ie the mega nav'
+          listable: hidden
+      -
+        handle: embolden_nav
+        field:
+          inline: true
+          options:
+            US: 'US (Primary Nav)'
+            UK: UK
+            International: International
+          display: 'Embolden Nav'
+          type: checkboxes
+          icon: checkboxes
+          instructions: 'Select all that apply'
+          listable: hidden

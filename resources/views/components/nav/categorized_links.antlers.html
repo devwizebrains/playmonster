@@ -1,0 +1,20 @@
+<div style="columns: {{ p_no_of_columns }} 160px;">
+  {{ p_categorized_links }}
+    <ul class="mb-6 pr-4" style="break-inside: avoid;">
+      <li>
+        <a href="{{ category:url }}" class="mb-1 leading-tight font-luckiest-guy" style="color:#000F9F; font-size: 1.4em;">
+          {{ category:title }} 
+        </a>
+      </li>
+
+      {{ links }}
+        <li>
+          <a href="{{ url }}" class="block leading-tight text-black hover:underline py-1" 
+          x-bind:class="'{{ embolden_nav|raw|join }}'.indexOf(market) !== -1 ? 'font-bold' : 'font-normal' ">
+            {{ title | widont }}
+          </a> 
+        </li>
+      {{ /links }}
+    </ul>
+  {{ /p_categorized_links }}
+</div>

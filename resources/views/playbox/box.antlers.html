@@ -1,0 +1,64 @@
+<div
+  x-data="{
+    isOpen: false,
+  }"
+  x-cloak
+  class="fixed z-50 right-0 top-0 w-64 transform bg-white shadow-xl rounded-bl-xl p-3 mt-16 transition duration-500 ease-in-out"
+  :class="isOpen ? 'translate-x-0' : 'translate-x-full'"
+  @click.away="isOpen = false"
+>
+  <div class="fixed z-50 top-0 left-0 transform -translate-x-full ml-px">
+    <button @click.prevent="isOpen = !isOpen" class=" bg-gray-300 p-2 pb-1 rounded-lg rounded-tr-none text-gray-800 focus:outline-none hover:bg-brand-blue-300 hover:text-white transition duration-300 ">
+      <svg viewBox="0 0 142.77 110.15" class="w-4 -mb-1 fill-current" xmlns="http://www.w3.org/2000/svg"><g transform="translate(-108.2 -125.31)"><path d="m108.21 169.65v65.81h142.79v-65.81zm67.14 6.57a6.66 6.66 0 0 1 9.36.94 6.56 6.56 0 0 1 -1 9.19 3.08 3.08 0 0 0 -.89 1.91c-.14 1.48 0 3-.08 4.48a3.13 3.13 0 0 1 -3.27 3.23 3.18 3.18 0 0 1 -3.12-3.24c-.05-.82 0-1.66 0-2.49a5 5 0 0 0 -1.7-4.77c-2.65-2.47-2.14-6.86.7-9.25zm64 43.13c0 3.13-1.17 4.29-4.32 4.29h-110.5c-3.75 0-4.78-1-4.78-4.69q0-16.47 0-33c0-3.54 1-4.6 4.51-4.6h36c3.37 0 4.46 1.12 4.48 4.51v5.16a10.37 10.37 0 0 0 9.87 10.21 85.2 85.2 0 0 0 10 0 10.35 10.35 0 0 0 9.81-10.1c.08-1.88 0-3.77.05-5.66 0-2.87 1.21-4.11 4-4.11q18.48 0 36.95 0c2.83 0 4 1.21 4 4.13q-.02 16.97-.04 33.86z"/><path d="m250.85 151.5v11.41h-142.56v-11.15h-.09c.32-5.6.22-11.19 1.06-16.59.88-5.65 7-10 11.59-9.85 7.57.33 15.15.09 22.72.09h1.91c-3.15 8.57-1.91 17.35-2.25 26.09h10.27c.29-6.67.43-13.22 1-19.73.16-1.93 1.43-3.8 2.37-5.6a2.34 2.34 0 0 1 1.76-.73h32.46 9.32a1.85 1.85 0 0 1 1.86 1 21.26 21.26 0 0 1 3 12.56c-.2 3.65-.08 7.32-.1 11v1.57h8.83c-.3-8.72.87-17.53-2.41-26.09h1.93c8.14 0 16.29.21 24.42-.08 4.36-.16 10.53 3.94 12 9.45a29 29 0 0 1 .81 6.38c.13 3.38 0 6.78 0 10.34z"/></g></svg>
+      <span x-text="$store.playbox.totalCount()" class="font-mono text-xs font-bold "></span>
+    </button>
+  </div>
+  <div class="absolute z-50 top-0 right-0 transform -translate-y-full">
+    <button @click.prevent="isOpen = false" class="inline-flex items-center font-medium bg-white pl-4 pr-3 leading-5 pt-1 text-xs tracking-tighter uppercase rounded-tl-xl focus:outline-none hover:text-red-600 transition duration-200">
+      Close
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" viewBox="0 0 20 20" fill="currentColor">
+        <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
+      </svg>
+    </button>
+  </div>
+  <h2 class=" text-lg font-luckiest-guy text-center">The Playbox </h2>
+
+  <div class="space-y-4 px-3 mt-3 max-h-50vh lg:max-h-60vh overflow-auto">
+    <template x-for="[brand, items] in Object.entries($store.playbox.itemsGroupByBrand())" :key="brand">
+      <div>
+        <a x-bind:href="items[0].brand_url" class="hover:text-blue-800 transition duration-200">
+          <h3 x-text="brand" class="uppercase text-xs font-bold tracking-tight"></h3>
+        </a>
+        <ul class="border-t pt-1 space-y-2">
+          <template x-for="item in items">
+            <li class="flex justify-between text-sm">
+              <div class="leading-4">
+                <span x-text="item.name" class="block"></span>
+                {{# <span x-text="item.id" class="block text-xs text-gray-500 leading-4"></span> #}}
+              </div>
+              <button @click.prevent="$store.playbox.removeFromBox(item.id)" class="ml-1 text-gray-500 focus:outline-none hover:text-red-600 transition duration-200">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                </svg>
+              </button>
+            </li>
+          </template>
+        </ul>
+      </div>
+    </template>
+  </div>
+  <div class="grid gap-2 grid-cols-1 mt-8 text-sm">
+    <a href="/playbox" class="inline-flex items-center px-4 py-1 uppercase bg-transparent border border-brand-blue-300 text-brand-blue-300 text-xs tracking-wide justify-center rounded-md focus:outline-none hover:bg-brand-blue-300 hover:text-white  transition duration-200">
+      View Playbox
+      <svg xmlns="http://www.w3.org/2000/svg" class="ml-1 -mr-1 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+      </svg>
+    </a>
+    <button @click.prevent="$store.playbox.items = []" class="inline-flex items-center px-4 py-1 uppercase bg-transparent border border-red-600 text-red-600 text-xs tracking-wide justify-center rounded-md focus:outline-none hover:bg-red-600 hover:text-white transition duration-200">
+      Remove All
+      <svg xmlns="http://www.w3.org/2000/svg" class="ml-1 -mr-1 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+    </button>
+  </div>
+</div>

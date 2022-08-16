@@ -1,0 +1,11 @@
+name: 'Jennifer Petsche'
+super: true
+roles:
+  - admin
+id: 5747df7b-d800-4e99-8746-763b03d97f36
+password_hash: $2y$10$Jl60Bkn5MbZlKxxMBXk1HOWkRD5nroklFm0X1eodgTq4m9hg2bVhe
+preferences:
+  collections:
+    brand_pages:
+      per_page: 100
+      after_save: continue_editing

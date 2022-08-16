@@ -1,0 +1,7 @@
+title: 'Login Page'
+data:
+  headline: 'Sign in to your account'
+  reset_headline: 'Reset your password'
+  reset_helper_text: |-
+    Need help accessing your account?
+    Email [bigonfun@playmonster.com](mailto:bigonfun@playmonster.com) for assistance.

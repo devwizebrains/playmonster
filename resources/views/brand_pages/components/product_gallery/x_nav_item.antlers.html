@@ -1,0 +1,23 @@
+{{#
+  p_page_count            Page of the gallery this represents.
+  p_button_class          Class attribute to use for the button.
+  p_inactive_button_class Class attribute to apply to the button when its slide is inactive.
+  p_active_button_class   Class attribute to apply to the button when its slide is active.
+  p_go_to                 Slide index to go to when the user clicks the button.
+  p_src                   Image src attribute value.
+#}}
+
+
+<div
+  aria-label ="Carousel Page {{ p_page_count }}"
+  tabindex   ="-1"
+>
+  <button
+    class                           ="{{ p_button_class }}"
+    data-js-inactive-class          ="{{ p_inactive_button_class }}"
+    data-js-active-class            ="{{ p_active_button_class }}"
+    data-js-product-gallery-x-go-to ="{{ p_go_to }}"
+  >
+    <img src="{{ p_src }}" width="80px" loading="lazy">
+  </button>
+</div>

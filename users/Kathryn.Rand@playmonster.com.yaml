@@ -1,0 +1,9 @@
+name: 'Kathryn Rand'
+roles:
+  - admin
+id: 6387ee28-79e9-4a1f-9387-887d489ee1e2
+password_hash: $2y$10$1BsC/FJk3Q/fQKKKmnU8S.O6aCKUxKcYURDPyLx8IQCBOHIELGtgC
+preferences:
+  collections:
+    brand_pages:
+      after_save: continue_editing

@@ -1,0 +1,107 @@
+---
+image_variants:
+  small:
+    image_class: w-40vw -mt-16
+  medium:
+    image_class: w-60vw -mt-16
+  large:
+    image_class: w-75vw -mt-8
+  full_width:
+    image_class: w-full
+
+font_variants:
+  open_sans: 
+    classes: font-sans font-normal
+  open_sans_thin: 
+    classes: font-sans font-thin
+  open_sans_extralight: 
+    classes: font-sans font-extralight
+  open_sans_light: 
+    classes: font-sans font-light
+  open_sans_medium: 
+    classes: font-sans font-medium
+  open_sans_semibold: 
+    classes: font-sans font-semibold
+  open_sans_bold: 
+    classes: font-sans font-bold
+  open_sans_extrabold: 
+    classes: font-sans font-extrabold
+  open_sans_black: 
+    classes: font-sans font-black
+  luckiest_guy: 
+    classes: font-luckiest-guy font-normal
+
+text_position:
+  top:
+    classes: top-0
+    style: margin-top
+  bot:
+    classes: bottom-0
+    style: margin-bottom
+  mid:
+    classes: inset-x-auto
+---
+
+{{# PurgeCSS safelist: text-center text-right inset-x-auto #}}
+
+<div class="flex items-center justify-center w-full h-screen">
+  {{ if show_headline }}
+    <div class="absolute {{ array_get:view:text_position key='{headline_position}.classes' }}" {{ if headline_adjustment != 0 && headline_position != 'mid' }} style="{{ array_get:view:text_position key='{headline_position}.style' }}: {{ headline_adjustment }}px"{{ /if }}>
+      <h1 class="{{ headline_alignment }} leading-tight px-8 pb-20 {{ array_get:view:font_variants key='{font}.classes' }} break-words" style="font-size: {{ font_size }}px; color: {{ headline_color }};">
+        {{ headline }}
+      </h1>
+    </div>
+  {{ /if }}
+
+
+
+
+  {{ if image.extension === 'gif' }}
+    <img src="null" loading="lazy" srcset="{{ image }}" class="{{ array_get:view:image_variants key='{size}.image_class' }} tns-lazy-img" alt="{{ alt }}">
+    
+  {{ elseif image.extension != 'gif' && size === 'small' }}
+    <img
+      srcset="{{ glide:image width='576' height='312' fit='max' }}"                
+      src="null"
+      loading="lazy"
+      alt="{{ alt }}"
+      class="{{ array_get:view:image_variants key='small.image_class' }} tns-lazy-img"
+    >
+    
+  {{ elseif image.extension != 'gif' && size === 'medium' }}
+    <img
+      srcset="{{ glide:image width='860' height='466' fit='max' }}"                     
+      src="null"
+      loading="lazy"
+      alt="{{ alt }}"
+      class="{{ array_get:view:image_variants key='medium.image_class' }} tns-lazy-img"
+    >
+
+  {{ elseif image.extension != 'gif' && size === 'large' }}
+    <img
+      srcset="{{ glide:image width='1080' height='585' fit='max' }}"                      
+      src="null"
+      loading="lazy"
+      alt="{{ alt }}"
+      class="{{ array_get:view:image_variants key='large.image_class' }} tns-lazy-img"
+    >
+
+  {{ elseif image.extension != 'gif' && size === 'full_width' }}
+    <img
+      srcset="{{ glide:image width='1440' height='780' fit='crop_focal' }}"                     
+      src="null"
+      loading="lazy"
+      alt="{{ alt }}"
+      class="{{ array_get:view:image_variants key='full_width.image_class' }} tns-lazy-img"
+    >
+
+  {{ else }}
+
+    <img src="null" loading="lazy" srcset="{{ glide:image width='860' height='466' fit='max' }}" alt="{{ alt }}" class="tns-lazy-img">
+
+  {{ /if }}
+</div>
+
+{{ if activate_playbox && playbox_settings:activate_download }}
+  {{ partial:brand_pages/components/playbox-btn }}
+{{ /if }}

@@ -1,0 +1,151 @@
+{{ products }}
+  <div class="relative flex items-center justify-center w-screen h-screen pb-10 overflow-hidden">
+    <div class="flex flex-col" style="width: 70vw;">
+      <div data-js-product-gallery-x="{{ slide_name }}_{{ index }}" class="ease-in-out">
+        {{ images }}
+          <div style="height: 70vh;">
+            {{ if extension === 'gif' }}
+              <img src="{{ glide:url }}" class="object-contain w-full h-full mx-auto tns-lazy-img">
+            {{ else }}
+              <img
+                srcset="{{ glide:url width='1366' height='683' fit='max' }}"                        
+                src="null"
+                loading="lazy"
+                alt="{{ alt }}"
+                class="object-contain w-full h-full mx-auto tns-lazy-img"
+              >
+            {{ /if }}
+          </div>
+        {{ /images }}
+
+
+        {{ product_videos }}
+          <div class="py-2" style="height: 70vh;">
+            <iframe
+              allowfullscreen
+              src         = "{{ video | embed_url }}"
+              frameborder = "0"
+              loading     = "lazy"
+              allow       = "autoplay; encrypted-media;"
+              class       = "w-full h-full"
+            ></iframe>
+          </div>
+        {{ /product_videos }}
+      </div>
+
+      {{ partial:brand_pages/components/product_gallery/x_nav }}
+    </div>
+
+
+    {{ if activate_playbox && playbox_settings:activate_download }}
+      {{ partial:brand_pages/components/playbox-btn }}
+    {{ /if }}
+    
+    <div class="absolute top-0 left-0 transition-all duration-500">
+      {{# PurgeCSS safelist: text-white text-black #}}
+      <div
+        class ="text-{{ content_text_color }} bg-white pt-2 px-3 pb-1 w-64"
+        style ="background-color: {{ content_background_color }};"
+      >
+        <h2
+          class ="text-base font-bold text-brand-blue-300"
+          style ="color: {{ content_heading_color }};"
+        >
+          {{ product_name }}
+        </h2>
+        {{ if !playbox_details }}
+          <div class="mb-1 text-xs">
+            <span>{{ item_number }}</span>
+            {{ if release_date }}
+              <span class="text-blue-400" style="color: {{ heading_color }};">&nbsp;|&nbsp;</span>
+              <span>{{ release_date }}</span>
+            {{ /if }}
+          </div>  
+        {{ /if }}
+
+        <div class="text-xs leading-tight transition-all duration-500 mt-5px mb-10px scoped-text-block">
+          {{ if playbox_details }}
+            {{ playbox_details }}
+              {{ if type == 'set_additional_info' }}
+                {{ if ! hide_on|raw|contains:showroom }}
+                  {{ additional_info }}
+                {{ /if }}
+              {{ elseif type == 'set_array_list' }}
+                <dl class="grid grid-cols-1 grid-flow-row mt-4">
+                  {{ array_list }}
+                  
+                  <div class="flex items-baseline {{ hide_on|raw|contains:showroom ? 'hidden' : '' }}">
+                    <dt class="font-bold pr-1 flex-shrink-0 w-20" style ="color: {{ content_heading_color }};">{{ key }}</dt>
+                    <dd class="leading-6">{{ value }}</dd>
+                  </div>
+                  {{ /array_list }}
+                </dl>
+              {{ /if }}
+            {{ /playbox_details }}
+          {{ else }}
+            {{ additional_info }}
+          {{ /if }}
+        </div>
+      </div>
+    </div>
+  </div>
+{{ /products }}
+
+<style>
+  .tns-controls [data-controls="prev"] {
+    background-color: #ffffff;
+    box-shadow: 0 0 15px 0 rgba(0,0,0,.5);
+    border-radius: 0 100px 100px 0;
+    position: absolute;
+    height: 0;
+    width: 0;
+    padding: 55px 0 0 70px;
+    margin: -27.5px 0;
+    overflow: hidden;
+    left: -14px;
+    transition: left .3s;
+    top: 50%;
+    z-index: 1000;
+  }
+  .tns-controls [data-controls="prev"]:hover {
+    left: 0px;
+  }
+  .tns-controls [data-controls="prev"]:after {
+    content: ' ';
+    background: transparent url(/img/angle-double-left.svg) no-repeat 30px 20px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 10;
+  }
+  .tns-controls [data-controls="next"] {
+    background-color: #ffffff;
+    box-shadow: 0 0 15px 0 rgba(0,0,0,.5);
+    border-radius: 100px 0 0 100px;
+    position: absolute;
+    height: 0;
+    width: 0;
+    padding: 55px 0 0 70px;
+    margin: -27.5px 0;
+    overflow: hidden;
+    right: -14px;
+    transition: right .3s;
+    top: 50%;
+    z-index: 1000;
+  }
+  .tns-controls [data-controls="next"]:hover {
+    right: 0px;
+  }
+  .tns-controls [data-controls="next"]:after {
+    content: ' ';
+    background: transparent url(/img/angle-double-right.svg) no-repeat 21px 20px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 10;
+  }
+</style>

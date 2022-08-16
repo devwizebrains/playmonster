@@ -1,0 +1,9 @@
+title: 'Category Pages'
+template: category_pages/show
+layout: layout
+revisions: false
+route: '{mount}/{slug}'
+sort_dir: asc
+date_behavior:
+  past: public
+  future: private

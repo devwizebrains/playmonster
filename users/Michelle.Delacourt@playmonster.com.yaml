@@ -1,0 +1,9 @@
+name: 'Michelle Delacourt'
+roles:
+  - admin
+id: 2c5ed6f4-5bd2-4129-b9e8-893a37d971f1
+password_hash: $2y$10$gkdZUWTAStRyKm28csR5/.ThWXblLaEPNLWAzkMe4sJDfBbECMYii
+preferences:
+  collections:
+    brand_pages:
+      after_save: continue_editing

@@ -1,0 +1,19 @@
+title: 'Back Button'
+fields:
+  -
+    handle: link
+    field:
+      display: 'Back Link'
+      type: link
+      icon: link
+      instructions: 'Which page would you like to link back to'
+      listable: hidden
+  -
+    handle: helper_text
+    field:
+      input_type: text
+      antlers: false
+      display: 'Helper Text'
+      type: text
+      icon: text
+      listable: hidden

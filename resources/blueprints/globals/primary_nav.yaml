@@ -1,0 +1,92 @@
+sections:
+  main:
+    display: Main
+    fields:
+      -
+        handle: featured_links
+        field:
+          mode: table
+          reorderable: true
+          type: grid
+          listable: hidden
+          display: 'Featured Links'
+          fields:
+            -
+              handle: image
+              field:
+                mode: grid
+                container: assets
+                restrict: false
+                allow_uploads: true
+                max_files: 1
+                type: assets
+                listable: hidden
+                display: Image
+            -
+              handle: link
+              field:
+                max_items: 1
+                mode: default
+                type: entries
+                listable: hidden
+                display: Link
+          max_rows: 4
+          add_row: 'Add Link'
+      -
+        handle: categorized_links
+        field:
+          fields:
+            -
+              handle: category
+              field:
+                max_items: 1
+                mode: default
+                collections:
+                  - category_pages
+                type: entries
+                listable: hidden
+                display: Category
+            -
+              handle: links
+              field:
+                mode: default
+                type: entries
+                listable: hidden
+                display: Links
+          mode: table
+          max_rows: 10
+          add_row: 'Add Category'
+          reorderable: true
+          type: grid
+          listable: hidden
+          display: 'Categorized Links'
+  sizing:
+    display: Sizing
+    fields:
+      -
+        handle: no_of_columns
+        field:
+          options:
+            3: '3 Columns'
+            4: '4 Columns'
+            5: '5 Columns'
+          inline: true
+          type: radio
+          listable: hidden
+          display: 'Number of columns'
+          instructions: 'Control how many columns the Categorized Links will use. Since the number of Categories tends to range from six to ten, you may need to adjust this to get the main menu to look correct.'
+          width: 50
+      -
+        handle: text_size
+        field:
+          options:
+            xs: 'X Small'
+            sm: Small
+            md: Medium
+            lg: Large
+          inline: false
+          type: radio
+          instructions: 'Change the text sizes used in the Categorized Links. Since the number of Categories and links can vary, this is key to getting the Mega Nav to look right.'
+          listable: hidden
+          display: 'Text Size'
+          width: 50

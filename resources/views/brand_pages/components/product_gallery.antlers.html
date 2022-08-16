@@ -1,0 +1,22 @@
+{{ section:gallery_y }}
+  <div
+    data-js-product-gallery-y               ="{{ slide_name }}"
+    data-js-product-gallery-y-show-controls ="{{ (products | count > 1) ? 'true' : 'false' }}"
+  >
+    {{ partial:brand_pages/components/product_gallery/products }}
+  </div>
+{{ /section:gallery_y }}
+
+
+
+<div class="relative w-full h-screen overflow-hidden">
+  {{ if (products | count) < 2 }}
+    {{ yield:gallery_y }}
+
+  {{ else }}
+    <div class="">
+      {{ yield:gallery_y }}
+      {{ partial:brand_pages/components/product_gallery/y_nav }}
+    </div>
+  {{ /if }}
+</div>

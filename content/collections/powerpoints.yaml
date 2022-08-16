@@ -1,0 +1,9 @@
+title: Powerpoints
+template: brand_pages/show
+layout: layout
+revisions: false
+route: 'pp/{slug}'
+sort_dir: asc
+date_behavior:
+  past: public
+  future: private

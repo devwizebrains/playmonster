@@ -1,0 +1,13 @@
+name: James
+super: true
+id: 4eeb016e-4fb8-4961-9a13-3e1e4e301617
+password_hash: $2y$10$CQmmi.QJpl4Ys8LZFhJ6puOKh4Fp2G5ATwnayyATOyWhHq7LVCHyO
+preferences:
+  assets:
+    assets:
+      mode: table
+    downloadables:
+      mode: grid
+  collections:
+    brand_pages:
+      after_save: continue_editing

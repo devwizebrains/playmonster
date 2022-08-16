@@ -1,0 +1,7 @@
+.outline-auto {
+  outline: auto;
+}
+
+.group:focus .group-focus\:outline-auto {
+  outline: auto;
+}

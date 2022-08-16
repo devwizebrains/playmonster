@@ -1,0 +1,274 @@
+title: 'Category Page'
+sections:
+  main:
+    display: Main
+    fields:
+      -
+        handle: title
+        field:
+          type: text
+          required: true
+          validate:
+            - required
+      -
+        handle: top_section
+        field:
+          type: section
+          listable: hidden
+          display: 'Top Section'
+      -
+        handle: image
+        field:
+          mode: grid
+          container: assets
+          restrict: false
+          allow_uploads: true
+          max_files: 1
+          type: assets
+          listable: hidden
+          display: Image
+          width: 50
+          instructions: 'Without a video, this field serves as the background. With a video, this displays while the video loads. Dimensions: `1440 X 780`. Applies to the entire page. Higher resolution images will be downsized and cropped to the focal point.'
+          folder: category_pages
+      -
+        handle: fullscreen_looping_video
+        field:
+          mode: grid
+          container: assets
+          restrict: false
+          allow_uploads: true
+          max_files: 1
+          display: 'Fullscreen Looping Video'
+          type: assets
+          width: 50
+          listable: hidden
+          instructions: 'Use the image field to the left to set an image to display while the video loads.'
+      -
+        handle: animation_keyframes
+        field:
+          theme: material
+          mode: css
+          indent_type: tabs
+          indent_size: 2
+          key_map: default
+          line_numbers: true
+          line_wrapping: true
+          type: code
+          instructions: 'Define keyframes for this page''s animations here and use the name in the CSS fields below.'
+          listable: hidden
+          display: 'Animation Keyframes'
+          default: |-
+            @keyframes animation-name {
+              0%   { opacity: 0; }
+              100% { opacity: 0; }
+            }
+      -
+        handle: animatable_images
+        field:
+          fields:
+            -
+              handle: image
+              field:
+                mode: grid
+                container: assets
+                restrict: false
+                allow_uploads: true
+                max_files: 1
+                type: assets
+                listable: hidden
+                display: Image
+                width: 50
+            -
+              handle: reference_point_x
+              field:
+                options:
+                  edge: 'Left/Right Edge'
+                  center: Center
+                inline: false
+                type: radio
+                instructions: 'Allows you to select the reference point as the center, or the edge of the image.'
+                listable: hidden
+                display: 'X-Axis Reference Point'
+                width: 25
+                default: center
+            -
+              handle: reference_point_y
+              field:
+                options:
+                  edge: 'Top/Bottom Edge'
+                  center: Center
+                inline: false
+                type: radio
+                instructions: 'Allows you to select the reference point as the center, or the edge of the image.'
+                listable: hidden
+                display: 'Y-Axis Reference Point'
+                width: 25
+                default: center
+            -
+              handle: css
+              field:
+                theme: material
+                mode: css
+                indent_type: tabs
+                indent_size: 2
+                key_map: default
+                line_numbers: true
+                line_wrapping: true
+                type: code
+                width: 75
+                listable: hidden
+                display: CSS
+                default: |-
+                  /* animation: animation-name 3s linear infinite; */
+                  top: 0%;
+                  left: 0%;
+            -
+              handle: z_index
+              field:
+                options:
+                  10: '10'
+                  20: '20'
+                  30: '30'
+                  40: '40'
+                  50: '50'
+                  auto: Auto
+                inline: false
+                type: radio
+                width: 25
+                listable: hidden
+                display: Z-Index
+                default: auto
+                instructions: 'Higher numbers layer on top of lower numbers.'
+          mode: stacked
+          add_row: 'Add Image'
+          reorderable: true
+          type: grid
+          listable: hidden
+          display: 'Floating Images'
+      -
+        handle: image_links
+        field:
+          fields:
+            -
+              handle: brand_page
+              field:
+                max_items: 1
+                mode: typeahead
+                collections:
+                  - brand_pages
+                  - category_pages
+                type: entries
+                listable: hidden
+                display: Link
+                instructions: 'Link to a Brand or Category page'
+            -
+              handle: css
+              field:
+                theme: material
+                mode: css
+                indent_type: tabs
+                indent_size: 2
+                key_map: default
+                line_numbers: true
+                line_wrapping: true
+                type: code
+                listable: hidden
+                display: CSS
+                default: |-
+                  top: 20%;
+                  left: 20%;
+                  width: 20%;
+                  height: 20%;
+                width: 75
+            -
+              handle: show_red_border
+              field:
+                type: toggle
+                instructions: 'For positioning purposes. Always disable this when you''re done positioning your links how you like them.'
+                listable: hidden
+                display: 'Show Red Border'
+                width: 25
+          mode: stacked
+          add_row: 'Add Link Block'
+          reorderable: true
+          type: grid
+          listable: hidden
+          display: 'Link Block'
+          instructions: 'Square links that lay on top of the page.'
+      -
+        handle: bottom_section
+        field:
+          type: section
+          listable: hidden
+          display: 'Grid Navigation'
+          instructions: 'A navigation for all the brands within the category.'
+      -
+        handle: brand_page_links_per_row
+        field:
+          options:
+            - '3'
+            - '4'
+            - '5'
+          inline: true
+          type: radio
+          listable: hidden
+          display: 'Number of columns'
+          default: '3'
+      -
+        handle: brand_page_links
+        field:
+          fields:
+            -
+              handle: brand_page
+              field:
+                max_items: 1
+                mode: typeahead
+                collections:
+                  - brand_pages
+                  - category_pages
+                type: entries
+                listable: hidden
+                display: 'Brand Page'
+            -
+              handle: image
+              field:
+                mode: grid
+                container: assets
+                restrict: false
+                allow_uploads: true
+                max_files: 1
+                type: assets
+                listable: hidden
+                display: Image
+          mode: table
+          add_row: 'Add Brand Page Link'
+          reorderable: true
+          type: grid
+          listable: hidden
+          display: 'Brand Page Links'
+          instructions: 'Dimensions: 420 X 300.'
+  sidebar:
+    display: Sidebar
+    fields:
+      -
+        handle: slug
+        field:
+          type: slug
+          required: true
+          localizable: true
+          validate:
+            - required
+  section_navigation:
+    display: Navigation
+    fields:
+      -
+        import: back_button
+        prefix: back_
+      -
+        handle: nav_is_bold
+        field:
+          display: 'Embolden on Nav'
+          type: toggle
+          icon: toggle
+          instructions: 'Toggle to **bold** this page''s link if included in the MegaNav'
+          listable: hidden

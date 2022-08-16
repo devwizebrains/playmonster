@@ -1,0 +1,13 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+
+@import 'vendor/alpinejs';
+
+@import 'components/carousel';
+
+@import 'utilities/aspect-ratio';
+@import 'utilities/filter';
+@import 'utilities/outline';
+@import 'utilities/scoped';
+
+@import 'tailwindcss/utilities';

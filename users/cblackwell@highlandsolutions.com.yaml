@@ -1,0 +1,13 @@
+name: 'Curtis Blackwell'
+super: true
+id: cf9ca2e3-1e45-40e8-92d3-7d28ba123a5e
+password_hash: $2y$10$2H0ER/1k1p9UJ.Tj6hJCWeJlmwrrpurFMe5J2ABQxGDMCJOKdMrH2
+preferences:
+  assets:
+    assets:
+      mode: table
+  collections:
+    category_pages:
+      after_save: continue_editing
+    brand_pages:
+      after_save: continue_editing

@@ -1,0 +1,46 @@
+---
+inactive_class: bg-white border-4 rounded-lg py-2 px-3 block border-transparent cursor-pointer focus:outline-none
+active_class:   bg-white border-4 rounded-lg py-2 px-3 block border-brand-blue-300 cursor-pointer focus:outline-none
+---
+
+
+
+
+<div
+  x-data      ="{ open: false }"
+  @click.away ="open = false"
+  :class      ="{
+    'top-0':        open,
+    '-top-256px':   !open,
+    'duration-250': open,
+    'duration-100': !open
+  }"
+  class ="absolute z-50 flex justify-center w-full py-12 transition-all ease-out bg-white shadow-lg px-3"
+  style ="height: 256px; max-height: 256px;"
+>
+  <div class="mx-auto">
+    <div class="flex justify-center" data-js-product-gallery-y-controls="{{ slide_name }}">
+      {{ products }}
+        <button
+          class                           ="{{ if first }}{{ view:active_class }}{{ else }}{{ view:inactive_class }}{{ /if }}"
+          data-js-inactive-class          ="{{ view:inactive_class }}"
+          data-js-active-class            ="{{ view:active_class }}"
+          data-js-product-gallery-y-go-to ="{{ index }}"
+        >
+          {{ images:0 }}
+            <img src="{{ glide:url width='160' height='96' fit='fill' }}" loading="lazy" class="m-auto">
+          {{ /images:0 }}
+
+          <h3 class="mt-1 mb-4 leading-tight">{{ product_name }}</h3>
+        </button>
+      {{ /products }}
+    </div>
+  </div>
+  <button
+    @click ="open = !open"
+    class  ="absolute flex items-center justify-center w-20 h-6 px-3 pt-2 pb-1 bg-white rounded-b-lg -bottom-20px text-brand-blue-300"
+  >
+    <img x-show="!open" src="/img/caret-down.svg">
+    <span x-show="open" class="absolute -mt-2 text-lg font-bold">&times;</span>
+  </button>
+</div>
